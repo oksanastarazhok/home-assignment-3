@@ -1,4 +1,4 @@
-package Award;
+package award;
 
 public class Award {
 

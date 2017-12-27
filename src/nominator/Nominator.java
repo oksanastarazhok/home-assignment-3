@@ -1,7 +1,7 @@
-package Nominator;
+package nominator;
 
-import Award.Award;
-import Nominee.Nominee;
+import award.Award;
+import nominee.Nominee;
 
 public class Nominator {
 

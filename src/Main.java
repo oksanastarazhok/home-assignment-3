@@ -1,36 +1,35 @@
-import Award.Award;
-import Nominator.Nominator;
-import Nominee.Nominee;
-
+import award.Award;
+import nominator.Nominator;
+import nominee.Nominee;
 
 public class Main {
     public static void main(String[] args) {
-        Award goodJobAward = new Award(100);
-        Award notBadAward = new Award(50, 1.75);
-        Award wellDoneAward = new Award(200);
-        Award thankYouAward = new Award(10, 2.25);
-        Award excellentAward = new Award(300, 2);
-        Award perfectAward = new Award(10);
+        Award goodJobAward1 = new Award(100);
+        Award notBadAward1 = new Award(50, 1.75);
+        Award wellDoneAward1 = new Award(200);
+        Award thankYouAward1 = new Award(10, 2.25);
+        Award excellentAward1 = new Award(300, 2);
+        Award perfectAward1 = new Award(10);
 
         Nominee nominee1 = new Nominee("Peter");
         Nominee nominee2 = new Nominee("Kate");
         Nominee nominee3 = new Nominee("Ann");
 
-        Nominator nominator1 = new Nominator("Paul");
+        Nominator nominator21 = new Nominator("Paul");
 
 
-        nominator1.nominate(goodJobAward, nominee1);
-        nominator1.nominate(goodJobAward, nominee1);
-        nominator1.nominate(thankYouAward, nominee1);
+        nominator21.nominate(goodJobAward1, nominee1);
+        nominator21.nominate(goodJobAward1, nominee1);
+        nominator21.nominate(thankYouAward1, nominee1);
 
-        nominator1.nominate(notBadAward, nominee2);
-        nominator1.nominate(wellDoneAward, nominee2);
-        nominator1.nominate(goodJobAward, nominee2);
-        nominator1.nominate(goodJobAward, nominee2);
+        nominator21.nominate(notBadAward1, nominee2);
+        nominator21.nominate(wellDoneAward1, nominee2);
+        nominator21.nominate(goodJobAward1, nominee2);
+        nominator21.nominate(goodJobAward1, nominee2);
 
-        nominator1.nominate(excellentAward, nominee3);
-        nominator1.nominate(perfectAward, nominee3);
-        nominator1.nominate(perfectAward, nominee3);
+        nominator21.nominate(excellentAward1, nominee3);
+        nominator21.nominate(perfectAward1, nominee3);
+        nominator21.nominate(perfectAward1, nominee3);
 
         nominee1.countQuantity();
         nominee2.countQuantity();
@@ -71,37 +70,37 @@ public class Main {
             System.out.println("Quantity of Ann's awards are not equal.");
 
         }
-        Nominator nominatorWithLimits = new Nominator("Karl", 3, 1000);
+        Nominator nominator2WithLimits = new Nominator("Karl", 3, 1000);
         Nominee nomineeWithLimits = new Nominee("John", 5, 1000);
 
-        nominatorWithLimits.nominate(goodJobAward, nomineeWithLimits);
-        nominatorWithLimits.nominate(goodJobAward, nomineeWithLimits);
-        nominatorWithLimits.nominate(goodJobAward, nomineeWithLimits);
-        nominatorWithLimits.nominate(goodJobAward, nomineeWithLimits);
+        nominator2WithLimits.nominate(goodJobAward1, nomineeWithLimits);
+        nominator2WithLimits.nominate(goodJobAward1, nomineeWithLimits);
+        nominator2WithLimits.nominate(goodJobAward1, nomineeWithLimits);
+        nominator2WithLimits.nominate(goodJobAward1, nomineeWithLimits);
 
-        Nominator nominatorWithLimits2 = new Nominator("Vlad", 5, 300);
+        Nominator nominator2WithLimits2 = new Nominator("Vlad", 5, 300);
         Nominee nomineeWithLimits2 = new Nominee("Sonya", 5, 1000);
 
-        nominatorWithLimits2.nominate(goodJobAward, nomineeWithLimits2);
-        nominatorWithLimits2.nominate(goodJobAward, nomineeWithLimits2);
-        nominatorWithLimits2.nominate(goodJobAward, nomineeWithLimits2);
-        nominatorWithLimits2.nominate(goodJobAward, nomineeWithLimits2);
+        nominator2WithLimits2.nominate(goodJobAward1, nomineeWithLimits2);
+        nominator2WithLimits2.nominate(goodJobAward1, nomineeWithLimits2);
+        nominator2WithLimits2.nominate(goodJobAward1, nomineeWithLimits2);
+        nominator2WithLimits2.nominate(goodJobAward1, nomineeWithLimits2);
 
 
-        Nominator nominatorWithLimits3 = new Nominator("Pavel", 5, 1000);
+        Nominator nominator2WithLimits3 = new Nominator("Pavel", 5, 1000);
         Nominee nomineeWithLimits3 = new Nominee("Evgenii", 2, 300);
 
-        nominatorWithLimits3.nominate(goodJobAward, nomineeWithLimits3);
-        nominatorWithLimits3.nominate(goodJobAward, nomineeWithLimits3);
-        nominatorWithLimits3.nominate(goodJobAward, nomineeWithLimits3);
+        nominator2WithLimits3.nominate(goodJobAward1, nomineeWithLimits3);
+        nominator2WithLimits3.nominate(goodJobAward1, nomineeWithLimits3);
+        nominator2WithLimits3.nominate(goodJobAward1, nomineeWithLimits3);
 
 
-        Nominator nominatorWithLimits4 = new Nominator("Michael", 5, 1000);
+        Nominator nominator2WithLimits4 = new Nominator("Michael", 5, 1000);
         Nominee nomineeWithLimits4 = new Nominee("Igor", 5, 300);
 
-        nominatorWithLimits4.nominate(goodJobAward, nomineeWithLimits4);
-        nominatorWithLimits4.nominate(goodJobAward, nomineeWithLimits4);
-        nominatorWithLimits4.nominate(goodJobAward, nomineeWithLimits4);
-        nominatorWithLimits4.nominate(goodJobAward, nomineeWithLimits4);
+        nominator2WithLimits4.nominate(goodJobAward1, nomineeWithLimits4);
+        nominator2WithLimits4.nominate(goodJobAward1, nomineeWithLimits4);
+        nominator2WithLimits4.nominate(goodJobAward1, nomineeWithLimits4);
+        nominator2WithLimits4.nominate(goodJobAward1, nomineeWithLimits4);
     }
 }

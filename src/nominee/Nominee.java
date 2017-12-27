@@ -1,6 +1,6 @@
-package Nominee;
+package nominee;
 
-import Award.Award;
+import award.Award;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class Nominee {
     private boolean noLimitAmt;
     private boolean noLimitQnt;
     private final List<Double> quantity = new ArrayList<Double>();
-    private final ArrayList<Award> awardListWithoutSoli = new ArrayList<Award>();
+    private final ArrayList<Award> award1ListWithoutSoli = new ArrayList<Award>();
     private int nomineeAwardQuantityLimit;
     private double nomineeAwardAmountLimit;
     private final int constantAwardQuantityLimit;
@@ -61,29 +61,29 @@ public class Nominee {
     }
 
 
-    public void receiveAward(Award awardInstance) {
+    public void receiveAward(Award award1Instance) {
 
-        if (awardInstance.getSoli() > 0) {
+        if (award1Instance.getSoli() > 0) {
 
-            double percentage = (awardInstance.getSoli() * 100) - 100;
+            double percentage = (award1Instance.getSoli() * 100) - 100;
             if (percentage < 0) {
                 System.out.println("Award value decreased on " + abs(percentage) + "%.");
             } else {
                 System.out.println("Award value increased on " + percentage + "%.");
             }
         } else {
-            System.out.println("Award value: " + awardInstance.getValue() + " Award value wasn't converted.");
-            awardListWithoutSoli.add(awardInstance);
+            System.out.println("Award value: " + award1Instance.getValue() + " Award value wasn't converted.");
+            award1ListWithoutSoli.add(award1Instance);
 
         }
     }
 
     public void countQuantity() {
-        for (int i = 0; i < awardListWithoutSoli.size(); i++) {
+        for (int i = 0; i < award1ListWithoutSoli.size(); i++) {
             double c = Math.random();
-            int population = awardListWithoutSoli.size();
+            int population = award1ListWithoutSoli.size();
             int z = (int) (Math.random() * 10);
-            double p = awardListWithoutSoli.get(i).getValue();
+            double p = award1ListWithoutSoli.get(i).getValue();
             quantity.add(i, ((Math.pow(z, 2.0) * p * (1 - p)) / Math.pow(c, 2.0) / (1 + ((((Math.pow(z, 2.0) * p * (1 - p)) / Math.pow(c, 2.0)) - 1) / population))));
         }
     }
