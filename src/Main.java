@@ -102,5 +102,10 @@ public class Main {
         nominator2WithLimits4.nominate(goodJobAward1, nomineeWithLimits4);
         nominator2WithLimits4.nominate(goodJobAward1, nomineeWithLimits4);
         nominator2WithLimits4.nominate(goodJobAward1, nomineeWithLimits4);
+
+        System.out.println( nominee1.getQuantity());
+        System.out.println( nominee2.getQuantity());
+        System.out.println( nominee3.getQuantity());
+
     }
 }
