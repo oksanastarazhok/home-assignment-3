@@ -102,6 +102,8 @@ public class Nominator {
             case "nominatorQuantityLimit":
                 System.out.println("Quantity limit was reached for nominator: " + name + ". Award count before limit: " + awardCountBeforeLimit);
                 break;
+                default:
+                    System.out.println("Aparently limit was reached.");
         }
     }
 
