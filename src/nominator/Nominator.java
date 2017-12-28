@@ -103,7 +103,7 @@ public class Nominator {
                 System.out.println("Quantity limit was reached for nominator: " + name + ". Award count before limit: " + awardCountBeforeLimit);
                 break;
                 default:
-                    System.out.println("Aparently limit was reached.");
+                    System.out.println("Apparently limit was reached.");
         }
     }
 
