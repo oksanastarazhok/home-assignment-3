@@ -3,6 +3,7 @@ package nominee;
 import award.Award;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static java.lang.Math.abs;
@@ -17,10 +18,14 @@ public class Nominee {
     private boolean noLimitAmt;
     private boolean noLimitQnt;
     private final List<Double> quantity = new ArrayList<Double>();
-    private final ArrayList<Award> award1ListWithoutSoli = new ArrayList<Award>();
+    private final List<Award> award1ListWithoutSoli = new ArrayList<Award>();
     private int nomineeAwardQuantityLimit;
     private double nomineeAwardAmountLimit;
     private final int constantAwardQuantityLimit;
+
+    public List<Award> getAward1ListWithoutSoli() {
+        return Collections.unmodifiableList(award1ListWithoutSoli);
+    }
 
     public double getNomineeAwardAmountLimit() {
         return nomineeAwardAmountLimit;
@@ -87,7 +92,7 @@ public class Nominee {
 
             double denominator1 = Math.pow(randomDecimal, 2.0);
             double numerator1 = ((Math.pow(randomWholeNumber, 2.0) * awardValueForFormula * (1 - awardValueForFormula)));
-            double numeratorForFormula = numerator1 /denominator1 ;
+            double numeratorForFormula = numerator1 / denominator1;
             double denominatorForFormula = (1 + (((numerator1 / denominator1) - 1) / population));
             double formula = numeratorForFormula / denominatorForFormula;
             quantity.add(i, formula);
