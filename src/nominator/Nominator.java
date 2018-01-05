@@ -3,6 +3,7 @@ package nominator;
 import award.Award;
 import nominee.Nominee;
 
+import java.util.List;
 
 
 public class Nominator {
@@ -18,9 +19,6 @@ public class Nominator {
     private boolean noLimitQnt;
     private int nominatorAwardQuantityLimit;
     private double nominatorAwardAmountLimit;
-
-
-
 
 
     public Nominator(String name) {
@@ -41,7 +39,8 @@ public class Nominator {
     /**
      * This method is used to give a nomination to nominee. At first it checks whether both nominee and nominator have no amount
      * and quantity limits. Then nominee limits are checked, after that we check nominator limits.
-     * @param awardInstance Award object
+     *
+     * @param awardInstance   Award object
      * @param nomineeInstance Nominee object
      */
     public void nominate(Award awardInstance, Nominee nomineeInstance) {
@@ -102,8 +101,9 @@ public class Nominator {
     /**
      * This method is used to print a name of person who reached the limit, type of limit (award value or award amount),
      * number of awards received before limit.
-     * @param limit string received from {@nominate}method
-     * @param name could be nominee or nominator's name
+     *
+     * @param limit                 string received from {@nominate}method
+     * @param name                  could be nominee or nominator's name
      * @param awardCountBeforeLimit number of awards received before limit
      */
     private static void limitReached(String limit, String name, int awardCountBeforeLimit) {
@@ -125,8 +125,13 @@ public class Nominator {
         }
     }
 
+    public void nominateTeam(Award awardInstance, List<Nominee> team) {
+        for (int i = 0; i < team.size(); i++) {
+            team.get(i).receiveAward(awardInstance);
+        }
 
-
+    }
 }
+
 
 
