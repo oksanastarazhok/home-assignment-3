@@ -7,6 +7,9 @@ import java.util.List;
 
 import static java.lang.Math.abs;
 
+/**
+ * Nominee object for receiving an award
+ */
 public class Nominee {
 
     static {
@@ -14,12 +17,33 @@ public class Nominee {
     }
 
     private String name;
+    /**
+     * if true, shows that Nominee can receive unlimited sum of money, otherwise amount is restricted
+     */
     private boolean noLimitAmt;
+    /**
+     * if true, shows that Nominee can receive unlimited number of awards, otherwise number is restricted
+     */
     private boolean noLimitQnt;
+    /**
+     * Contains a list of values counted according to the formula for the awards witout soli
+     */
     private final List<Double> quantity = new ArrayList<Double>();
+    /**
+     * Contains a list of received awards without soli
+     */
     private final ArrayList<Award> award1ListWithoutSoli = new ArrayList<Award>();
+    /**
+     * Shows how much awards nominee can receive
+     */
     private int nomineeAwardQuantityLimit;
+    /**
+     * Shows the max sum that nominee can receive
+     */
     private double nomineeAwardAmountLimit;
+    /**
+     * If it equals 0, than nominee has no limits, otherwise it equals nomineeAwardQuantityLimit
+     */
     private final int constantAwardQuantityLimit;
 
     public double getNomineeAwardAmountLimit() {
@@ -42,6 +66,10 @@ public class Nominee {
         return quantity;
     }
 
+    /**
+     * Constructor for a nominee object without limits
+     * @param name name of nominee
+     */
     public Nominee(String name) {
         this.name = name;
         this.noLimitAmt = true;
@@ -53,6 +81,12 @@ public class Nominee {
         return name;
     }
 
+    /**
+     * Constructor for nominee object with limits
+     * @param name name of nominee
+     * @param nomineeAwardQuantityLimit Shows how much awards nominee can receive
+     * @param nomineeAwardAmountLimit Shows the max sum that nominee can receive
+     */
     public Nominee(String name, int nomineeAwardQuantityLimit, double nomineeAwardAmountLimit) {
         this.name = name;
         this.nomineeAwardQuantityLimit = nomineeAwardQuantityLimit;
@@ -60,7 +94,11 @@ public class Nominee {
         this.constantAwardQuantityLimit = nomineeAwardQuantityLimit;
     }
 
-
+    /**
+     * Method checks if an award has soli. If there is a soli, it counts how much it was changed in in percentage terms and prints
+     * the value. If there is no soli, it prints the award initial value.
+     * @param award1Instance award object
+     */
     public void receiveAward(Award award1Instance) {
 
         if (award1Instance.getSoli() > 0) {
@@ -78,6 +116,15 @@ public class Nominee {
         }
     }
 
+    /**
+     * Method counts the value for awards with soli according to the following formula:
+     * quantity = ((Z^2*(P)*(1-P))/(C^2)) / (1 + ((((Z^2*(P)*(1-P ))/(C^2))-1)/population))
+     * where
+     * randomDecimal equals a random decimal i.e. 5% = 0.05
+     * population equals number of received awards which has no soli
+     * randomWholeNumber  a random whole number i.e. 3
+     * awardValueForFormula equals award value without soli
+     */
     public void countQuantity() {
         for (int i = 0; i < award1ListWithoutSoli.size(); i++) {
             double randomDecimal = Math.random();

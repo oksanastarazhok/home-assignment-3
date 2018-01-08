@@ -3,6 +3,9 @@ package nominator;
 import award.Award;
 import nominee.Nominee;
 
+/**
+ * Nominator object for giving a nomination to nominee
+ */
 public class Nominator {
 
     static {
@@ -10,7 +13,6 @@ public class Nominator {
     }
 
     private final int constantAwardQuantityLimit;
-
     private String name;
     private boolean noLimitAmt;
     private boolean noLimitQnt;
