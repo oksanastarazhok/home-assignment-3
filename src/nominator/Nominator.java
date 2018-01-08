@@ -126,12 +126,17 @@ public class Nominator {
     }
 
     public void nominateTeam(Award awardInstance, List<Nominee> team) {
-        for (int i = 0; i < team.size(); i++) {
+       
+        int i = 0;
+        while (nominatorAwardAmountLimit >= awardInstance.getValue()) {
+
+
             team.get(i).receiveAward(awardInstance);
+            nominatorAwardAmountLimit -= awardInstance.getValue();
+            i++;
+
         }
+
 
     }
 }
-
-
-

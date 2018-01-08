@@ -95,6 +95,8 @@ public class Main {
         Nominator nominator2WithLimits3 = new Nominator("Pavel", 5, 1000);
         Nominee nomineeWithLimits3 = new Nominee("Evgenii", 2, 300);
 
+        Nominator nominatorWithLimits4 = new Nominator("Oksana",10,300);
+
 
         nominator2WithLimits3.nominate(goodJobAward1, nomineeWithLimits3);
         nominator2WithLimits3.nominate(goodJobAward1, nomineeWithLimits3);
@@ -113,9 +115,13 @@ public class Main {
         System.out.println(nominee2.getQuantity());
         System.out.println(nominee3.getQuantity());
 
-        List<Nominee> team = new ArrayList<Nominee>();
+        List<Nominee> dreamTeam = new ArrayList<Nominee>();
+        dreamTeam.add(0,nominee1);
+        dreamTeam.add(1,nominee2);
+        dreamTeam.add(2,nominee3);
+        dreamTeam.add(3,nomineeWithLimits);
 
-
+        nominatorWithLimits4.nominateTeam(goodJobAward1,dreamTeam);
     }
 
 
