@@ -130,9 +130,13 @@ public class Nominator {
     public void nominateTeam(Award awardInstance, List<Nominee> team) {
 
         int i = 0;
+        int max_i = team.size();
+
         while (nominatorAwardAmountLimit >= awardInstance.getValue()) {
 
-
+            if (i >= max_i) {
+                i = 0;
+            }
             team.get(i).receiveAward(awardInstance);
             nominatorAwardAmountLimit -= awardInstance.getValue();
             i++;

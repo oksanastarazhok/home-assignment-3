@@ -32,10 +32,6 @@ public class Nominee {
     private final List<Double> quantity = new ArrayList<Double>();
     private final List<Award> award1ListWithoutSoli = new ArrayList<Award>();
     /**
-     * Contains a list of received awards without soli
-     */
-    private final ArrayList<Award> award1ListWithoutSoli = new ArrayList<Award>();
-    /**
      * Shows how much awards nominee can receive
      */
     private int nomineeAwardQuantityLimit;
@@ -74,6 +70,7 @@ public class Nominee {
 
     /**
      * Constructor for a nominee object without limits
+     *
      * @param name name of nominee
      */
     public Nominee(String name) {
@@ -89,9 +86,10 @@ public class Nominee {
 
     /**
      * Constructor for nominee object with limits
-     * @param name name of nominee
+     *
+     * @param name                      name of nominee
      * @param nomineeAwardQuantityLimit Shows how much awards nominee can receive
-     * @param nomineeAwardAmountLimit Shows the max sum that nominee can receive
+     * @param nomineeAwardAmountLimit   Shows the max sum that nominee can receive
      */
     public Nominee(String name, int nomineeAwardQuantityLimit, double nomineeAwardAmountLimit) {
         this.name = name;
@@ -103,6 +101,7 @@ public class Nominee {
     /**
      * Method checks if an award has soli. If there is a soli, it counts how much it was changed in in percentage terms and prints
      * the value. If there is no soli, it prints the award initial value.
+     *
      * @param award1Instance award object
      */
     public void receiveAward(Award award1Instance) {
