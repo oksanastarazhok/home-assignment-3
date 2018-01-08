@@ -2,8 +2,13 @@ import award.Award;
 import nominator.Nominator;
 import nominee.Nominee;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
+
+
         Award goodJobAward1 = new Award(100);
         Award notBadAward1 = new Award(50, 1.75);
         Award wellDoneAward1 = new Award(200);
@@ -90,6 +95,9 @@ public class Main {
         Nominator nominator2WithLimits3 = new Nominator("Pavel", 5, 1000);
         Nominee nomineeWithLimits3 = new Nominee("Evgenii", 2, 300);
 
+        Nominator nominatorWithLimits4 = new Nominator("Oksana",10,300);
+
+
         nominator2WithLimits3.nominate(goodJobAward1, nomineeWithLimits3);
         nominator2WithLimits3.nominate(goodJobAward1, nomineeWithLimits3);
         nominator2WithLimits3.nominate(goodJobAward1, nomineeWithLimits3);
@@ -103,9 +111,18 @@ public class Main {
         nominator2WithLimits4.nominate(goodJobAward1, nomineeWithLimits4);
         nominator2WithLimits4.nominate(goodJobAward1, nomineeWithLimits4);
 
-        System.out.println( nominee1.getQuantity());
-        System.out.println( nominee2.getQuantity());
-        System.out.println( nominee3.getQuantity());
+        System.out.println(nominee1.getQuantity());
+        System.out.println(nominee2.getQuantity());
+        System.out.println(nominee3.getQuantity());
 
+        List<Nominee> dreamTeam = new ArrayList<Nominee>();
+        dreamTeam.add(0,nominee1);
+        dreamTeam.add(1,nominee2);
+        dreamTeam.add(2,nominee3);
+        dreamTeam.add(3,nomineeWithLimits);
+
+        nominatorWithLimits4.nominateTeam(goodJobAward1,dreamTeam);
     }
+
+
 }

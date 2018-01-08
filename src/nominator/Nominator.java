@@ -3,6 +3,9 @@ package nominator;
 import award.Award;
 import nominee.Nominee;
 
+import java.util.List;
+
+
 /**
  * Nominator object for giving a nomination to nominee
  */
@@ -35,10 +38,18 @@ public class Nominator {
         this.constantAwardQuantityLimit = nominatorAwardQuantityLimit;
     }
 
-
+    /**
+     * This method is used to give a nomination to nominee. At first it checks whether both nominee and nominator have no amount
+     * and quantity limits. Then nominee limits are checked, after that we check nominator limits.
+     *
+     * @param awardInstance   Award object
+     * @param nomineeInstance Nominee object
+     */
     public void nominate(Award awardInstance, Nominee nomineeInstance) {
         System.out.println("Nominee: " + nomineeInstance.getName());
+
         if (noLimitAmt && noLimitQnt && nomineeInstance.isNoLimitAmt() && nomineeInstance.isNoLimitQnt()) {
+
             nomineeInstance.receiveAward(awardInstance);
         } else if (noLimitAmt && noLimitQnt) {
             if (nomineeInstance.getNomineeAwardQuantityLimit() > 0) {
@@ -89,7 +100,14 @@ public class Nominator {
         }
     }
 
-
+    /**
+     * This method is used to print a name of person who reached the limit, type of limit (award value or award amount),
+     * number of awards received before limit.
+     *
+     * @param limit                 string received from {@nominate}method
+     * @param name                  could be nominee or nominator's name
+     * @param awardCountBeforeLimit number of awards received before limit
+     */
     private static void limitReached(String limit, String name, int awardCountBeforeLimit) {
         switch (limit) {
             case "nomineeAmountLimit":
@@ -104,12 +122,23 @@ public class Nominator {
             case "nominatorQuantityLimit":
                 System.out.println("Quantity limit was reached for nominator: " + name + ". Award count before limit: " + awardCountBeforeLimit);
                 break;
-                default:
-                    System.out.println("Apparently limit was reached.");
+            default:
+                System.out.println("Apparently limit was reached.");
         }
     }
 
+    public void nominateTeam(Award awardInstance, List<Nominee> team) {
 
+        int i = 0;
+        while (nominatorAwardAmountLimit >= awardInstance.getValue()) {
+
+
+            team.get(i).receiveAward(awardInstance);
+            nominatorAwardAmountLimit -= awardInstance.getValue();
+            i++;
+
+        }
+
+
+    }
 }
-
-
