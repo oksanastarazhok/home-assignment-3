@@ -1,4 +1,5 @@
 import award.Award;
+import nomination.NominationHelper;
 import nominator.Nominator;
 import nominee.Nominee;
 
@@ -8,7 +9,15 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
+        NominationHelper myHelper = new NominationHelper();
+        
 
+       task1(); //Main.task1();
+   //     task2();
+    //    task3();
+    }
+
+    private static void task1(){
         Award goodJobAward1 = new Award(100);
         Award notBadAward1 = new Award(50, 1.75);
         Award wellDoneAward1 = new Award(200);
@@ -95,7 +104,7 @@ public class Main {
         Nominator nominator2WithLimits3 = new Nominator("Pavel", 5, 1000);
         Nominee nomineeWithLimits3 = new Nominee("Evgenii", 2, 300);
 
-        Nominator nominatorWithLimits4 = new Nominator("Oksana", 10, 30000);
+        Nominator nominatorWithLimits4 = new Nominator("Oksana", 10, 100);
 
 
         nominator2WithLimits3.nominate(goodJobAward1, nomineeWithLimits3);
