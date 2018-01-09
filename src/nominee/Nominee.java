@@ -27,16 +27,19 @@ public class Nominee {
      */
     private boolean noLimitQnt;
     /**
-     * Contains a list of values counted according to the formula for the awards witout soli
+     * Contains a list of values counted according to the formula for the awards without soli
      */
     private final List<Double> quantity = new ArrayList<Double>();
+    /**
+     * Contains a List of Award object for each Nominee
+     */
     private final List<Award> award1ListWithoutSoli = new ArrayList<Award>();
     /**
-     * Shows how much awards nominee can receive
+     * Shows how much awards Nominee can receive
      */
     private int nomineeAwardQuantityLimit;
     /**
-     * Shows the max sum that nominee can receive
+     * Shows the max sum that Nominee can receive
      */
     private double nomineeAwardAmountLimit;
     /**
@@ -71,7 +74,7 @@ public class Nominee {
     /**
      * Constructor for a nominee object without limits
      *
-     * @param name name of nominee
+     * @param name name of Nominee
      */
     public Nominee(String name) {
         this.name = name;
@@ -85,11 +88,11 @@ public class Nominee {
     }
 
     /**
-     * Constructor for nominee object with limits
+     * Constructor for Nominee object with limits
      *
-     * @param name                      name of nominee
-     * @param nomineeAwardQuantityLimit Shows how much awards nominee can receive
-     * @param nomineeAwardAmountLimit   Shows the max sum that nominee can receive
+     * @param name                      name of Nominee
+     * @param nomineeAwardQuantityLimit Shows how much awards Nominee can receive
+     * @param nomineeAwardAmountLimit   Shows the max sum that Nominee can receive
      */
     public Nominee(String name, int nomineeAwardQuantityLimit, double nomineeAwardAmountLimit) {
         this.name = name;
