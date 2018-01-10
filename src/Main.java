@@ -9,15 +9,15 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
+
+taskWithFormula();
+taskWithLoops();}
+
+
+
+    private static void taskWithFormula(){
         NominationHelper myHelper = new NominationHelper();
-        
 
-       task1(); //Main.task1();
-   //     task2();
-    //    task3();
-    }
-
-    private static void task1(){
         Award goodJobAward1 = new Award(100);
         Award notBadAward1 = new Award(50, 1.75);
         Award wellDoneAward1 = new Award(200);
@@ -32,22 +32,22 @@ public class Main {
         Nominator nominator21 = new Nominator("Paul");
 
 
-        nominator21.nominate(goodJobAward1, nominee1);
-        nominator21.nominate(goodJobAward1, nominee1);
-        nominator21.nominate(thankYouAward1, nominee1);
+        myHelper.nominate(goodJobAward1, nominee1, nominator21);
+        myHelper.nominate(goodJobAward1, nominee1, nominator21);
+        myHelper.nominate(thankYouAward1, nominee1, nominator21);
 
-        nominator21.nominate(notBadAward1, nominee2);
-        nominator21.nominate(wellDoneAward1, nominee2);
-        nominator21.nominate(goodJobAward1, nominee2);
-        nominator21.nominate(goodJobAward1, nominee2);
+        myHelper.nominate(notBadAward1, nominee2, nominator21);
+        myHelper.nominate(wellDoneAward1, nominee2, nominator21);
+        myHelper.nominate(goodJobAward1, nominee2, nominator21);
+        myHelper.nominate(goodJobAward1, nominee2, nominator21);
 
-        nominator21.nominate(excellentAward1, nominee3);
-        nominator21.nominate(perfectAward1, nominee3);
-        nominator21.nominate(perfectAward1, nominee3);
+        myHelper.nominate(excellentAward1, nominee3, nominator21);
+        myHelper.nominate(perfectAward1, nominee3, nominator21);
+        myHelper.nominate(perfectAward1, nominee3, nominator21);
 
-        nominee1.countQuantity();
-        nominee2.countQuantity();
-        nominee3.countQuantity();
+        myHelper.countQuantity(nominee1);
+        myHelper.countQuantity(nominee2);
+        myHelper.countQuantity(nominee3);
 
         Double PetersQntOne = nominee1.getQuantity().get(0);
         Double PetersQntTwo = nominee1.getQuantity().get(1);
@@ -83,22 +83,27 @@ public class Main {
         if (AnnsQntOne < AnnsQntTwo || AnnsQntOne > AnnsQntTwo) {
             System.out.println("Quantity of Ann's awards are not equal.");
 
-        }
+        }}
+
+
+        private static void taskWithLoops(){
+        NominationHelper myHelper = new NominationHelper();
+        Award goodJobAward1 = new Award(100);
         Nominator nominator2WithLimits = new Nominator("Karl", 3, 1000);
         Nominee nomineeWithLimits = new Nominee("John", 5, 1000);
 
-        nominator2WithLimits.nominate(goodJobAward1, nomineeWithLimits);
-        nominator2WithLimits.nominate(goodJobAward1, nomineeWithLimits);
-        nominator2WithLimits.nominate(goodJobAward1, nomineeWithLimits);
-        nominator2WithLimits.nominate(goodJobAward1, nomineeWithLimits);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits, nominator2WithLimits);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits, nominator2WithLimits);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits, nominator2WithLimits);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits, nominator2WithLimits);
 
         Nominator nominator2WithLimits2 = new Nominator("Vlad", 5, 300);
         Nominee nomineeWithLimits2 = new Nominee("Sonya", 5, 1000);
 
-        nominator2WithLimits2.nominate(goodJobAward1, nomineeWithLimits2);
-        nominator2WithLimits2.nominate(goodJobAward1, nomineeWithLimits2);
-        nominator2WithLimits2.nominate(goodJobAward1, nomineeWithLimits2);
-        nominator2WithLimits2.nominate(goodJobAward1, nomineeWithLimits2);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits2, nominator2WithLimits2);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits2, nominator2WithLimits2);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits2, nominator2WithLimits2);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits2, nominator2WithLimits2);
 
 
         Nominator nominator2WithLimits3 = new Nominator("Pavel", 5, 1000);
@@ -107,22 +112,24 @@ public class Main {
         Nominator nominatorWithLimits4 = new Nominator("Oksana", 10, 100);
 
 
-        nominator2WithLimits3.nominate(goodJobAward1, nomineeWithLimits3);
-        nominator2WithLimits3.nominate(goodJobAward1, nomineeWithLimits3);
-        nominator2WithLimits3.nominate(goodJobAward1, nomineeWithLimits3);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits3, nominator2WithLimits3);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits3, nominator2WithLimits3);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits3, nominator2WithLimits3);
 
 
         Nominator nominator2WithLimits4 = new Nominator("Michael", 5, 1000);
         Nominee nomineeWithLimits4 = new Nominee("Igor", 5, 300);
 
-        nominator2WithLimits4.nominate(goodJobAward1, nomineeWithLimits4);
-        nominator2WithLimits4.nominate(goodJobAward1, nomineeWithLimits4);
-        nominator2WithLimits4.nominate(goodJobAward1, nomineeWithLimits4);
-        nominator2WithLimits4.nominate(goodJobAward1, nomineeWithLimits4);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits4, nominator2WithLimits4);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits4, nominator2WithLimits4);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits4, nominator2WithLimits4);
+            myHelper.nominate(goodJobAward1, nomineeWithLimits4, nominator2WithLimits4);
 
-        System.out.println(nominee1.getQuantity());
-        System.out.println(nominee2.getQuantity());
-        System.out.println(nominee3.getQuantity());
+
+            Nominee nominee1 = new Nominee("Peter");
+            Nominee nominee2 = new Nominee("Kate");
+            Nominee nominee3 = new Nominee("Ann");
+
 
         List<Nominee> dreamTeam = new ArrayList<Nominee>();
         dreamTeam.add(0, nominee1);
@@ -130,7 +137,7 @@ public class Main {
         dreamTeam.add(2, nominee3);
         dreamTeam.add(3, nomineeWithLimits);
 
-        nominatorWithLimits4.nominateTeam(goodJobAward1, dreamTeam);
+            myHelper.nominateTeam(goodJobAward1, dreamTeam, nominatorWithLimits4);
     }
 
 

@@ -28,6 +28,7 @@ public class NominationHelper {
             }
         } else {
             System.out.println("Award value: " + award1Instance.getValue() + " Award value wasn't converted.");
+
             nomineeInstance.getAward1ListWithoutSoli().add(award1Instance);
 
         }
@@ -155,26 +156,23 @@ public class NominationHelper {
      *
      * @param awardInstance Award object
      * @param team          List containing Nominees objects
-     *
      */
     public void nominateTeam(Award awardInstance, List<Nominee> team, Nominator nominatorInstance) {
 
         int i = 0;
         int max_i = team.size();
-
-        while (nominatorInstance.getNominatorAwardAmountLimit() >= awardInstance.getValue()) {
+        double dCurrentStateOfLimit = nominatorInstance.getNominatorAwardAmountLimit();
+        while (dCurrentStateOfLimit >= awardInstance.getValue()) {
 
             if (i >= max_i) {
                 i = 0;
             }
             receiveAward(awardInstance, team.get(i));
 
-            double d = nominatorInstance.getNominatorAwardAmountLimit();
-            d -= awardInstance.getValue();
-
+            dCurrentStateOfLimit -= awardInstance.getValue();
             i++;
 
-
+            System.out.println("Loop");
         }
 
 

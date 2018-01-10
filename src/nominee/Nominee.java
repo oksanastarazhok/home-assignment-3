@@ -31,7 +31,7 @@ public class Nominee {
     /**
      * Contains a List of Award object for each Nominee
      */
-    private final List<Award> award1ListWithoutSoli = new ArrayList<Award>();
+    private  List<Award> award1ListWithoutSoli = new ArrayList<Award>();
     /**
      * Shows how much awards Nominee can receive
      */
@@ -46,7 +46,7 @@ public class Nominee {
     private final int constantAwardQuantityLimit;
 
     public List<Award> getAward1ListWithoutSoli() {
-        return Collections.unmodifiableList(award1ListWithoutSoli);
+        return (award1ListWithoutSoli);
     }
 
     public double getNomineeAwardAmountLimit() {
