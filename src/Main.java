@@ -8,14 +8,16 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        // taskWithFormula();
+        taskWithLoops();
+    }
 
-
-taskWithFormula();
-taskWithLoops();}
-
-
-
-    private static void taskWithFormula(){
+    /**
+     * This method creates several instances of the following classes: award, nominee and nominator.
+     * Also it creates a few nominations, counts whether it has been converted or not and compares nominations received by different nominees
+     * among themselves.
+     */
+    private static void taskWithFormula() {
         NominationHelper myHelper = new NominationHelper();
 
         Award goodJobAward1 = new Award(100);
@@ -83,27 +85,33 @@ taskWithLoops();}
         if (AnnsQntOne < AnnsQntTwo || AnnsQntOne > AnnsQntTwo) {
             System.out.println("Quantity of Ann's awards are not equal.");
 
-        }}
+        }
+    }
 
 
-        private static void taskWithLoops(){
+    /**
+     * This method creates several instances of the following classes: award, nominee and nominator. All nominator and nominee
+     * instance are created with limits. When the limit is reached it will print a message describing the type of limit,
+     * who reached the limit, name of the person and award count before limit
+     */
+    private static void taskWithLoops() {
         NominationHelper myHelper = new NominationHelper();
         Award goodJobAward1 = new Award(100);
         Nominator nominator2WithLimits = new Nominator("Karl", 3, 1000);
         Nominee nomineeWithLimits = new Nominee("John", 5, 1000);
 
-            myHelper.nominate(goodJobAward1, nomineeWithLimits, nominator2WithLimits);
-            myHelper.nominate(goodJobAward1, nomineeWithLimits, nominator2WithLimits);
-            myHelper.nominate(goodJobAward1, nomineeWithLimits, nominator2WithLimits);
-            myHelper.nominate(goodJobAward1, nomineeWithLimits, nominator2WithLimits);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits, nominator2WithLimits);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits, nominator2WithLimits);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits, nominator2WithLimits);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits, nominator2WithLimits);
 
         Nominator nominator2WithLimits2 = new Nominator("Vlad", 5, 300);
         Nominee nomineeWithLimits2 = new Nominee("Sonya", 5, 1000);
 
-            myHelper.nominate(goodJobAward1, nomineeWithLimits2, nominator2WithLimits2);
-            myHelper.nominate(goodJobAward1, nomineeWithLimits2, nominator2WithLimits2);
-            myHelper.nominate(goodJobAward1, nomineeWithLimits2, nominator2WithLimits2);
-            myHelper.nominate(goodJobAward1, nomineeWithLimits2, nominator2WithLimits2);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits2, nominator2WithLimits2);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits2, nominator2WithLimits2);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits2, nominator2WithLimits2);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits2, nominator2WithLimits2);
 
 
         Nominator nominator2WithLimits3 = new Nominator("Pavel", 5, 1000);
@@ -112,23 +120,23 @@ taskWithLoops();}
         Nominator nominatorWithLimits4 = new Nominator("Oksana", 10, 100);
 
 
-            myHelper.nominate(goodJobAward1, nomineeWithLimits3, nominator2WithLimits3);
-            myHelper.nominate(goodJobAward1, nomineeWithLimits3, nominator2WithLimits3);
-            myHelper.nominate(goodJobAward1, nomineeWithLimits3, nominator2WithLimits3);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits3, nominator2WithLimits3);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits3, nominator2WithLimits3);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits3, nominator2WithLimits3);
 
 
         Nominator nominator2WithLimits4 = new Nominator("Michael", 5, 1000);
         Nominee nomineeWithLimits4 = new Nominee("Igor", 5, 300);
 
-            myHelper.nominate(goodJobAward1, nomineeWithLimits4, nominator2WithLimits4);
-            myHelper.nominate(goodJobAward1, nomineeWithLimits4, nominator2WithLimits4);
-            myHelper.nominate(goodJobAward1, nomineeWithLimits4, nominator2WithLimits4);
-            myHelper.nominate(goodJobAward1, nomineeWithLimits4, nominator2WithLimits4);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits4, nominator2WithLimits4);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits4, nominator2WithLimits4);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits4, nominator2WithLimits4);
+        myHelper.nominate(goodJobAward1, nomineeWithLimits4, nominator2WithLimits4);
 
 
-            Nominee nominee1 = new Nominee("Peter");
-            Nominee nominee2 = new Nominee("Kate");
-            Nominee nominee3 = new Nominee("Ann");
+        Nominee nominee1 = new Nominee("Peter");
+        Nominee nominee2 = new Nominee("Kate");
+        Nominee nominee3 = new Nominee("Ann");
 
 
         List<Nominee> dreamTeam = new ArrayList<Nominee>();
@@ -137,7 +145,7 @@ taskWithLoops();}
         dreamTeam.add(2, nominee3);
         dreamTeam.add(3, nomineeWithLimits);
 
-            myHelper.nominateTeam(goodJobAward1, dreamTeam, nominatorWithLimits4);
+        myHelper.nominateTeam(goodJobAward1, dreamTeam, nominatorWithLimits4);
     }
 
 

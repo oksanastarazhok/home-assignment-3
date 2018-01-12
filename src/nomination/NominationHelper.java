@@ -13,10 +13,11 @@ public class NominationHelper {
     /**
      * Method checks if an award has soli. If there is a soli, it counts how much it was changed in in percentage terms
      * and prints the value. If there is no soli, it prints the award initial value.
-     * @param award1Instance Award object
+     *
+     * @param award1Instance  Award object
      * @param nomineeInstance Nominee object
      */
-    public void receiveAward(Award award1Instance, Nominee nomineeInstance) {
+    private void receiveAward(Award award1Instance, Nominee nomineeInstance) {
 
         if (award1Instance.getSoli() > 0) {
 
@@ -36,10 +37,11 @@ public class NominationHelper {
 
 
     /**
-     *This method is used to give a nomination to Nominee. At first it checks whether both Nominee and Nominator have no
-     *  amount and quantity limits. Then nominee limits are checked, after that we check nominator limits.
-     * @param awardInstance Award object Award object
-     * @param nomineeInstance Nominee object Nominee object
+     * This method is used to give a nomination to Nominee. At first it checks whether both Nominee and Nominator have no
+     * amount and quantity limits. Then nominee limits are checked, after that we check nominator limits.
+     *
+     * @param awardInstance     Award object Award object
+     * @param nomineeInstance   Nominee object Nominee object
      * @param nominatorInstance Nominator object Nominator object
      */
     public void nominate(Award awardInstance, Nominee nomineeInstance, Nominator nominatorInstance) {
@@ -153,8 +155,9 @@ public class NominationHelper {
 
     /**
      * This method is used to nominate a whole team.
-     * @param awardInstance Award object
-     * @param team  List containing Nominees objects
+     *
+     * @param awardInstance     Award object
+     * @param team              List containing Nominees objects
      * @param nominatorInstance Nominator object
      */
     public void nominateTeam(Award awardInstance, List<Nominee> team, Nominator nominatorInstance) {
@@ -172,7 +175,7 @@ public class NominationHelper {
             dCurrentStateOfLimit -= awardInstance.getValue();
             i++;
 
-            System.out.println("Loop");
+
         }
 
 
