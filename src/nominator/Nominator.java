@@ -16,11 +16,11 @@ public class Nominator {
     private final int constantAwardQuantityLimit;
 
     /**
-     * if true, shows that Nominator can receive unlimited sum of money, otherwise amount is restricted
+     * if true, shows that Nominator can give unlimited sum of money, otherwise amount is restricted
      */
     private String name;
     /**
-     * if true, shows that Nominator can receive unlimited sum of money, otherwise amount is restricted
+     * if true, shows that Nominator can give unlimited sum of money, otherwise amount is restricted
      */
     public boolean noLimitAmt;
     /**

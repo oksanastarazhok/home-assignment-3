@@ -8,9 +8,11 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // taskWithFormula();
-        taskWithLoops();
+         taskWithFormula();
+         taskWithLoops();
+
     }
+
 
     /**
      * This method creates several instances of the following classes: award, nominee and nominator.
