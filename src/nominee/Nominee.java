@@ -1,6 +1,7 @@
 package nominee;
 
 import award.Award;
+import person.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 /**
  * Nominee object for receiving an award
  */
-public class Nominee {
+public class Nominee extends Person {
 
     static {
         System.out.println("An instance of Nominee class was initialized");
@@ -34,11 +35,11 @@ public class Nominee {
     /**
      * Shows how much awards Nominee can receive
      */
-    private int nomineeAwardQuantityLimit;
+    private int nomineeAwardQuantityLimit; //rename and move to Person
     /**
      * Shows the max sum that Nominee can receive
      */
-    private double nomineeAwardAmountLimit;
+    private double nomineeAwardAmountLimit;//rename and move to Person
     /**
      * If it equals 0, than nominee has no limits, otherwise it equals nomineeAwardQuantityLimit
      */

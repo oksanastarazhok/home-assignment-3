@@ -64,10 +64,10 @@ public class NominationHelper {
             }
         } else if (nomineeInstance.isNoLimitAmt() && nomineeInstance.isNoLimitQnt()) {
             if (nominatorInstance.getNominatorAwardQuantityLimit() > 0) {
-                if (nominatorInstance.getNominatorAwardAmountLimit() >= awardInstance.getValue()) {
+                if (nominatorInstance.getAwardAmountLimit() >= awardInstance.getValue()) {
                     receiveAward(awardInstance, nomineeInstance);
                     nominatorInstance.setNominatorAwardQuantityLimit(nominatorInstance.getNominatorAwardQuantityLimit() - 1);
-                    nominatorInstance.setNominatorAwardAmountLimit(nominatorInstance.getNominatorAwardAmountLimit() - awardInstance.getValue());
+                    nominatorInstance.setAwardAmountLimit(nominatorInstance.getAwardAmountLimit() - awardInstance.getValue());
 
                 } else {
                     limitReached("nominatorAmountLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getNominatorAwardQuantityLimit());
@@ -77,7 +77,7 @@ public class NominationHelper {
             }
         } else {
             if (nominatorInstance.getNominatorAwardQuantityLimit() > 0) {
-                if (nominatorInstance.getNominatorAwardAmountLimit() >= awardInstance.getValue()) {
+                if (nominatorInstance.getAwardAmountLimit() >= awardInstance.getValue()) {
                     if (nomineeInstance.getNomineeAwardQuantityLimit() > 0) {
                         if (nomineeInstance.getNomineeAwardAmountLimit() >= awardInstance.getValue()) {
                             receiveAward(awardInstance, nomineeInstance);
@@ -164,7 +164,7 @@ public class NominationHelper {
 
         int i = 0;
         int max_i = team.size();
-        double dCurrentStateOfLimit = nominatorInstance.getNominatorAwardAmountLimit();
+        double dCurrentStateOfLimit = nominatorInstance.getAwardAmountLimit();
         while (dCurrentStateOfLimit >= awardInstance.getValue()) {
 
             if (i >= max_i) {

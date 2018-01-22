@@ -1,96 +1,44 @@
 package nominator;
 
+import person.Person;
+
 /**
  * Nominator object for giving a nomination to nominee
  */
-public class Nominator {
+public class Nominator extends Person {
 
     static {
         System.out.println("An instance of Nominator class was initialized");
     }
 
-
     /**
-     * If it equals 0, than Nominator has no limits, otherwise it equals nominatorAwardQuantityLimit
+     * Should be set to True to be able to give awards
      */
-    private final int constantAwardQuantityLimit;
-
-    /**
-     * if true, shows that Nominator can give unlimited sum of money, otherwise amount is restricted
-     */
-    private String name;
-    /**
-     * if true, shows that Nominator can give unlimited sum of money, otherwise amount is restricted
-     */
-    public boolean noLimitAmt;
-    /**
-     * if true, shows that Nominator can receive unlimited number of awards, otherwise number is restricted
-     */
-    public boolean noLimitQnt;
-
-    /**
-     * Shows how much awards Nominator can receive
-     */
-    private int nominatorAwardQuantityLimit;
+    private boolean isManager;
 
 
     /**
-     * Shows the max sum that Nominator can receive
+     *Constructor for Nominator object WITHOUT limits
+     * @param name name name of Nominator
+     * @param noLimitAmt if true, shows that Nominator can give unlimited sum of money, otherwise amount is restricted
+     * @param noLimitQnt if true, shows that Nominator can give unlimited number of awards, otherwise number is restricted
+     * @param constantAwardQuantityLimit it equals 0, Nominator has no limits
      */
-    private double nominatorAwardAmountLimit;
-
-    /**
-     * Constructor for a Nominator object without limits
-     *
-     * @param name name of Nominator
-     */
-    public Nominator(String name) {
-        this.name = name;
-        this.noLimitAmt = true;
-        this.noLimitQnt = true;
-        this.constantAwardQuantityLimit = 0;
+    public Nominator(String name, boolean noLimitAmt, boolean noLimitQnt, int constantAwardQuantityLimit) {
+        super(name, noLimitAmt, noLimitQnt, constantAwardQuantityLimit);
+        isManager = true;
     }
 
     /**
-     * Constructor for Nominator object with limits
-     *
-     * @param name                        name of Nominator
-     * @param nominatorAwardQuantityLimit Shows how much awards Nominator can receive
-     * @param nominatorAwardAmountLimit   Shows the max sum that Nominator can receive
+     * Constructor for Nominator object WITH limits
+     * @param name name name of Nominator
+     * @param awardQuantityLimit Shows how much awards Nominator can give
+     * @param awardAmountLimit Shows the max sum that Nominator can give
+     * @param constantAwardQuantityLimit it equals awardQuantityLimit
      */
-    public Nominator(String name, int nominatorAwardQuantityLimit, double nominatorAwardAmountLimit) {
-        this.name = name;
-        this.nominatorAwardQuantityLimit = nominatorAwardQuantityLimit;
-        this.nominatorAwardAmountLimit = nominatorAwardAmountLimit;
-        this.constantAwardQuantityLimit = nominatorAwardQuantityLimit;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getNominatorAwardQuantityLimit() {
-        return nominatorAwardQuantityLimit;
-    }
-
-    public void setNominatorAwardQuantityLimit(int nominatorAwardQuantityLimit) {
-        this.nominatorAwardQuantityLimit = nominatorAwardQuantityLimit;
-    }
-
-    public double getNominatorAwardAmountLimit() {
-        return nominatorAwardAmountLimit;
-    }
-
-    public void setNominatorAwardAmountLimit(double nominatorAwardAmountLimit) {
-        this.nominatorAwardAmountLimit = nominatorAwardAmountLimit;
-    }
-
-    public int getConstantAwardQuantityLimit() {
-        return constantAwardQuantityLimit;
+    public Nominator(String name, int awardQuantityLimit, double awardAmountLimit, int constantAwardQuantityLimit) {
+        super(name, awardQuantityLimit, awardAmountLimit, constantAwardQuantityLimit);
+        isManager = true;
     }
 
 
