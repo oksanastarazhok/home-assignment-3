@@ -11,6 +11,33 @@ import static java.lang.Math.abs;
 public class NominationHelper {
 
     /**
+     * This method is used to print a name of person who reached the limit, type of limit (award value or award amount),
+     * number of awards received before limit.
+     *
+     * @param limit                 string received from {@nominate}method
+     * @param name                  could be nominee or nominator's name
+     * @param awardCountBeforeLimit number of awards received before limit
+     */
+    private static void limitReached(String limit, String name, int awardCountBeforeLimit) {
+        switch (limit) {
+            case "nomineeAmountLimit":
+                System.out.println("Amount limit was reached for nominee: " + name + ". Award count before limit: " + awardCountBeforeLimit);
+                break;
+            case "nomineeQuantityLimit":
+                System.out.println("Quantity limit was reached for nominee: " + name + ". Award count before limit: " + awardCountBeforeLimit);
+                break;
+            case "nominatorAmountLimit":
+                System.out.println("Amount limit was reached for nominator: " + name + ". Award count before limit: " + awardCountBeforeLimit);
+                break;
+            case "nominatorQuantityLimit":
+                System.out.println("Quantity limit was reached for nominator: " + name + ". Award count before limit: " + awardCountBeforeLimit);
+                break;
+            default:
+                System.out.println("Apparently limit was reached.");
+        }
+    }
+
+    /**
      * Method checks if an award has soli. If there is a soli, it counts how much it was changed in in percentage terms
      * and prints the value. If there is no soli, it prints the award initial value.
      *
@@ -35,7 +62,6 @@ public class NominationHelper {
         }
     }
 
-
     /**
      * This method is used to give a nomination to Nominee. At first it checks whether both Nominee and Nominator have no
      * amount and quantity limits. Then nominee limits are checked, after that we check nominator limits.
@@ -47,83 +73,55 @@ public class NominationHelper {
     public void nominate(Award awardInstance, Nominee nomineeInstance, Nominator nominatorInstance) {
         System.out.println("Nominee: " + nomineeInstance.getName());
 
-        if (nominatorInstance.noLimitAmt && nominatorInstance.noLimitQnt && nomineeInstance.isNoLimitAmt() && nomineeInstance.isNoLimitQnt()) {
+        if (nominatorInstance.isNoLimitAmt() && nominatorInstance.isNoLimitQnt() && nomineeInstance.isNoLimitAmt() && nomineeInstance.isNoLimitQnt()) {
 
             receiveAward(awardInstance, nomineeInstance);
-        } else if (nominatorInstance.noLimitAmt && nominatorInstance.noLimitQnt) {
-            if (nomineeInstance.getNomineeAwardQuantityLimit() > 0) {
-                if (nomineeInstance.getNomineeAwardAmountLimit() >= awardInstance.getValue()) {
+        } else if (nominatorInstance.isNoLimitAmt() && nominatorInstance.isNoLimitQnt()) {
+            if (nomineeInstance.getAwardQuantityLimit() > 0) {
+                if (nomineeInstance.getAwardAmountLimit() >= awardInstance.getValue()) {
                     receiveAward(awardInstance, nomineeInstance);
-                    nomineeInstance.setNomineeAwardQuantityLimit(nomineeInstance.getNomineeAwardQuantityLimit() - 1);
-                    nomineeInstance.setNomineeAwardAmountLimit(nomineeInstance.getNomineeAwardAmountLimit() - awardInstance.getValue());
+                    nomineeInstance.setAwardQuantityLimit(nomineeInstance.getAwardQuantityLimit() - 1);
+                    nomineeInstance.setAwardAmountLimit(nomineeInstance.getAwardAmountLimit() - awardInstance.getValue());
                 } else {
-                    limitReached("nomineeAmountLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getNomineeAwardQuantityLimit());
+                    limitReached("nomineeAmountLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getAwardQuantityLimit());
                 }
             } else {
-                limitReached("nomineeQuantityLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getNomineeAwardQuantityLimit());
+                limitReached("nomineeQuantityLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getAwardQuantityLimit());
             }
         } else if (nomineeInstance.isNoLimitAmt() && nomineeInstance.isNoLimitQnt()) {
-            if (nominatorInstance.getNominatorAwardQuantityLimit() > 0) {
+            if (nominatorInstance.getAwardQuantityLimit() > 0) {
                 if (nominatorInstance.getAwardAmountLimit() >= awardInstance.getValue()) {
                     receiveAward(awardInstance, nomineeInstance);
-                    nominatorInstance.setNominatorAwardQuantityLimit(nominatorInstance.getNominatorAwardQuantityLimit() - 1);
+                    nominatorInstance.setAwardQuantityLimit(nominatorInstance.getAwardQuantityLimit() - 1);
                     nominatorInstance.setAwardAmountLimit(nominatorInstance.getAwardAmountLimit() - awardInstance.getValue());
 
                 } else {
-                    limitReached("nominatorAmountLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getNominatorAwardQuantityLimit());
+                    limitReached("nominatorAmountLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getAwardQuantityLimit());
                 }
             } else {
-                limitReached("nominatorQuantityLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getNominatorAwardQuantityLimit());
+                limitReached("nominatorQuantityLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getAwardQuantityLimit());
             }
         } else {
-            if (nominatorInstance.getNominatorAwardQuantityLimit() > 0) {
+            if (nominatorInstance.getAwardQuantityLimit() > 0) {
                 if (nominatorInstance.getAwardAmountLimit() >= awardInstance.getValue()) {
-                    if (nomineeInstance.getNomineeAwardQuantityLimit() > 0) {
-                        if (nomineeInstance.getNomineeAwardAmountLimit() >= awardInstance.getValue()) {
+                    if (nomineeInstance.getAwardQuantityLimit() > 0) {
+                        if (nomineeInstance.getAwardAmountLimit() >= awardInstance.getValue()) {
                             receiveAward(awardInstance, nomineeInstance);
-                            nominatorInstance.setNominatorAwardQuantityLimit(nominatorInstance.getNominatorAwardQuantityLimit() - 1);
-                            nomineeInstance.setNomineeAwardQuantityLimit(nomineeInstance.getNomineeAwardQuantityLimit() - 1);
-                            nomineeInstance.setNomineeAwardAmountLimit(nomineeInstance.getNomineeAwardAmountLimit() - awardInstance.getValue());
+                            nominatorInstance.setAwardQuantityLimit(nominatorInstance.getAwardQuantityLimit() - 1);
+                            nomineeInstance.setAwardQuantityLimit(nomineeInstance.getAwardQuantityLimit() - 1);
+                            nomineeInstance.setAwardAmountLimit(nomineeInstance.getAwardAmountLimit() - awardInstance.getValue());
                         } else {
-                            limitReached("nomineeAmountLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getNomineeAwardQuantityLimit());
+                            limitReached("nomineeAmountLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getAwardQuantityLimit());
                         }
                     } else {
-                        limitReached("nomineeQuantityLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getNomineeAwardQuantityLimit());
+                        limitReached("nomineeQuantityLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getAwardQuantityLimit());
                     }
                 } else {
-                    limitReached("nominatorAmountLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getNominatorAwardQuantityLimit());
+                    limitReached("nominatorAmountLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getAwardQuantityLimit());
                 }
             } else {
-                limitReached("nominatorQuantityLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getNominatorAwardQuantityLimit());
+                limitReached("nominatorQuantityLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getAwardQuantityLimit());
             }
-        }
-    }
-
-
-    /**
-     * This method is used to print a name of person who reached the limit, type of limit (award value or award amount),
-     * number of awards received before limit.
-     *
-     * @param limit                 string received from {@nominate}method
-     * @param name                  could be nominee or nominator's name
-     * @param awardCountBeforeLimit number of awards received before limit
-     */
-    private static void limitReached(String limit, String name, int awardCountBeforeLimit) {
-        switch (limit) {
-            case "nomineeAmountLimit":
-                System.out.println("Amount limit was reached for nominee: " + name + ". Award count before limit: " + awardCountBeforeLimit);
-                break;
-            case "nomineeQuantityLimit":
-                System.out.println("Quantity limit was reached for nominee: " + name + ". Award count before limit: " + awardCountBeforeLimit);
-                break;
-            case "nominatorAmountLimit":
-                System.out.println("Amount limit was reached for nominator: " + name + ". Award count before limit: " + awardCountBeforeLimit);
-                break;
-            case "nominatorQuantityLimit":
-                System.out.println("Quantity limit was reached for nominator: " + name + ". Award count before limit: " + awardCountBeforeLimit);
-                break;
-            default:
-                System.out.println("Apparently limit was reached.");
         }
     }
 

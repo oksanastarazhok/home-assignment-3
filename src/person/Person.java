@@ -8,6 +8,9 @@ public class Person {
      */
     private final int constantAwardQuantityLimit;
     private String name;
+
+
+
     /**
      * if true, shows that Person can give/receive unlimited sum of money, otherwise amount is restricted
      */
@@ -28,14 +31,10 @@ public class Person {
     private double awardAmountLimit;
 
     /**
-     * Constructor for a Nominator object without limits
-     *
-     * @param name name of Nominator
-     * @param noLimitAmt
-     * @param noLimitQnt
-     * @param constantAwardQuantityLimit
+     * Constructor for Person WITHOUT limits
+     * @param name name of Person
      */
-    public Person(String name, boolean noLimitAmt, boolean noLimitQnt, int constantAwardQuantityLimit) {
+    public Person(String name) {
         this.name = name;
         this.noLimitAmt = true;
         this.noLimitQnt = true;
@@ -43,13 +42,12 @@ public class Person {
     }
 
     /**
-     * Constructor for Nominator object with limits
-     *
-     * @param name                        name of Nominator
-     * @param awardQuantityLimit Shows how much awards Nominator can receive
-     * @param awardAmountLimit            Shows the max sum that Nominator can receive
+     * Constructor for Person WITH limits
+     * @param name name of Person
+     * @param awardQuantityLimit Shows how much awards Person can give/ receive
+     * @param awardAmountLimit Shows the max sum that Person can give/ receive
      */
-    public Person(String name, int awardQuantityLimit, double awardAmountLimit, int constantAwardQuantityLimit) {
+    public Person(String name, int awardQuantityLimit, double awardAmountLimit) {
         this.name = name;
         this.awardAmountLimit = awardQuantityLimit;
         this.awardAmountLimit = awardAmountLimit;
@@ -65,12 +63,12 @@ public class Person {
         this.name = name;
     }
 
-    public int getNominatorAwardQuantityLimit() {
+    public int getAwardQuantityLimit() {
         return awardQuantityLimit;
     }
 
-    public void setNominatorAwardQuantityLimit(int nominatorAwardQuantityLimit) {
-        this.awardQuantityLimit = nominatorAwardQuantityLimit;
+    public void setAwardQuantityLimit(int awardQuantityLimit) {
+        this.awardQuantityLimit = awardQuantityLimit;
     }
 
     public double getAwardAmountLimit() {
@@ -85,5 +83,20 @@ public class Person {
         return constantAwardQuantityLimit;
     }
 
+    public boolean isNoLimitAmt() {
+        return noLimitAmt;
+    }
+
+    public boolean isNoLimitQnt() {
+        return noLimitQnt;
+    }
+
+    public void setNoLimitAmt(boolean noLimitAmt) {
+        this.noLimitAmt = noLimitAmt;
+    }
+
+    public void setNoLimitQnt(boolean noLimitQnt) {
+        this.noLimitQnt = noLimitQnt;
+    }
 
 }

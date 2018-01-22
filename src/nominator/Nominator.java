@@ -20,24 +20,21 @@ public class Nominator extends Person {
     /**
      *Constructor for Nominator object WITHOUT limits
      * @param name name name of Nominator
-     * @param noLimitAmt if true, shows that Nominator can give unlimited sum of money, otherwise amount is restricted
-     * @param noLimitQnt if true, shows that Nominator can give unlimited number of awards, otherwise number is restricted
-     * @param constantAwardQuantityLimit it equals 0, Nominator has no limits
-     */
-    public Nominator(String name, boolean noLimitAmt, boolean noLimitQnt, int constantAwardQuantityLimit) {
-        super(name, noLimitAmt, noLimitQnt, constantAwardQuantityLimit);
+         */
+    public Nominator(String name) {
+        super(name);
         isManager = true;
     }
 
     /**
-     * Constructor for Nominator object WITH limits
+     *Constructor for Nominator object WITH limits
      * @param name name name of Nominator
      * @param awardQuantityLimit Shows how much awards Nominator can give
      * @param awardAmountLimit Shows the max sum that Nominator can give
-     * @param constantAwardQuantityLimit it equals awardQuantityLimit
+     *
      */
-    public Nominator(String name, int awardQuantityLimit, double awardAmountLimit, int constantAwardQuantityLimit) {
-        super(name, awardQuantityLimit, awardAmountLimit, constantAwardQuantityLimit);
+    public Nominator(String name, int awardQuantityLimit, double awardAmountLimit) {
+        super(name, awardQuantityLimit, awardAmountLimit);
         isManager = true;
     }
 
