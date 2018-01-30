@@ -23,7 +23,8 @@ public class Nominator extends Person {
          */
     public Nominator(String name) {
         super(name);
-        isManager = true;
+        this.isManager = true;
+
     }
 
     /**
@@ -35,8 +36,11 @@ public class Nominator extends Person {
      */
     public Nominator(String name, int awardQuantityLimit, double awardAmountLimit) {
         super(name, awardQuantityLimit, awardAmountLimit);
-        isManager = true;
+        this.isManager = true;
     }
 
-
+    @Override
+    public void login() {
+        super.login();
+    }
 }

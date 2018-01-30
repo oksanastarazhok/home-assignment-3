@@ -15,6 +15,7 @@ public class Nominee extends Person {
         System.out.println("An instance of Nominee class was initialized");
     }
 
+
     /**
      * Contains a list of values counted according to the formula for the awards without soli
      */
@@ -45,6 +46,10 @@ public class Nominee extends Person {
         super(name, awardQuantityLimit, awardAmountLimit);
     }
 
+    @Override
+    public void login() {
+        System.out.println("Nominee logged in.");;
+    }
 
     public List<Award> getAward1ListWithoutSoli() {
         return (award1ListWithoutSoli);

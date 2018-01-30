@@ -30,8 +30,11 @@ public class Person {
      */
     private double awardAmountLimit;
 
+
+
     /**
      * Constructor for Person WITHOUT limits
+     *
      * @param name name of Person
      */
     public Person(String name) {
@@ -43,9 +46,10 @@ public class Person {
 
     /**
      * Constructor for Person WITH limits
-     * @param name name of Person
+     *
+     * @param name               name of Person
      * @param awardQuantityLimit Shows how much awards Person can give/ receive
-     * @param awardAmountLimit Shows the max sum that Person can give/ receive
+     * @param awardAmountLimit   Shows the max sum that Person can give/ receive
      */
     public Person(String name, int awardQuantityLimit, double awardAmountLimit) {
         this.name = name;
@@ -54,6 +58,13 @@ public class Person {
         this.constantAwardQuantityLimit = awardQuantityLimit;
     }
 
+
+    /**
+     * This method is used to show override in action.
+     */
+    public void login() {
+        System.out.println("Somebody logged in");
+    }
 
     public String getName() {
         return name;
@@ -87,12 +98,12 @@ public class Person {
         return noLimitAmt;
     }
 
-    public boolean isNoLimitQnt() {
-        return noLimitQnt;
-    }
-
     public void setNoLimitAmt(boolean noLimitAmt) {
         this.noLimitAmt = noLimitAmt;
+    }
+
+    public boolean isNoLimitQnt() {
+        return noLimitQnt;
     }
 
     public void setNoLimitQnt(boolean noLimitQnt) {
