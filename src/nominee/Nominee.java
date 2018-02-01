@@ -48,7 +48,7 @@ public class Nominee extends Person {
 
     @Override
     public void login() {
-        System.out.println("Nominee logged in.");;
+        System.out.printf("%s logged in.%n", Nominee.this.getName());;
     }
 
     public List<Award> getAward1ListWithoutSoli() {

@@ -9,6 +9,8 @@ public class Award {
         System.out.println("An instance of Award class was initialized");
     }
 
+
+
     private final int value;
     /**
      * Standard of Living Index.
@@ -16,6 +18,8 @@ public class Award {
      * socioeconomic class in a certain geographic area, usually a country.
      */
     private double soli;
+
+
 
     /**
      * Constructor for award object WITHOUT soli
@@ -37,6 +41,8 @@ public class Award {
         this.soli = soli;
     }
 
+
+
     public int getValue() {
         return value;
     }
@@ -45,5 +51,6 @@ public class Award {
     public double getSoli() {
         return soli;
     }
+
 
 }

@@ -8,8 +8,10 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-         taskWithFormula();
-         taskWithLoops();
+        //taskWithFormula();
+       // taskWithLoops();
+        inheritanceTask();
+
 
     }
 
@@ -150,5 +152,11 @@ public class Main {
         myHelper.nominateTeam(goodJobAward1, dreamTeam, nominatorWithLimits4);
     }
 
+    private static void inheritanceTask() {
+        Nominator nominator = new Nominator("Default Ivan");
+        nominator.login();
 
+        Nominee nominee = new Nominee("Default Ivan");
+        nominee.login();
+    }
 }

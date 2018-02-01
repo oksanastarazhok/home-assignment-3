@@ -1,14 +1,15 @@
 package person;
 
-public class Person {
+public abstract class Person {
 
+    private String name;
+
+    public enum Type{};
 
     /**
      * If it equals 0, than Person has no limits, otherwise it equals awardQuantityLimit
      */
     private final int constantAwardQuantityLimit;
-    private String name;
-
 
 
     /**
@@ -44,6 +45,8 @@ public class Person {
         this.constantAwardQuantityLimit = 0;
     }
 
+
+
     /**
      * Constructor for Person WITH limits
      *
@@ -62,8 +65,8 @@ public class Person {
     /**
      * This method is used to show override in action.
      */
-    public void login() {
-        System.out.println("Somebody logged in");
+    public void login(){
+        System.out.println("This method should demonstrate override in action. This method wasn't overridden in Nominator Class.");
     }
 
     public String getName() {

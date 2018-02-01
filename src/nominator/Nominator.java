@@ -43,4 +43,6 @@ public class Nominator extends Person {
     public void login() {
         super.login();
     }
+
+
 }
