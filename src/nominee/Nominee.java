@@ -2,6 +2,7 @@ package nominee;
 
 import award.Award;
 import person.Person;
+import person.Type;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +31,9 @@ public class Nominee extends Person {
      *
      * @param name name of Nominee
      */
-    public Nominee(String name) {
+    public Nominee(String name, Type role) {
         super(name);
+        super.role = role;
     }
 
 

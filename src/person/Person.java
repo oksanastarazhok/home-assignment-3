@@ -4,7 +4,7 @@ public abstract class Person {
 
     private String name;
 
-    public enum Type{};
+    public Type role;
 
     /**
      * If it equals 0, than Person has no limits, otherwise it equals awardQuantityLimit

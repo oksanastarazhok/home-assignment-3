@@ -2,6 +2,7 @@ import award.Award;
 import nomination.NominationHelper;
 import nominator.Nominator;
 import nominee.Nominee;
+import person.Type;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,11 +32,11 @@ public class Main {
         Award excellentAward1 = new Award(300, 2);
         Award perfectAward1 = new Award(10);
 
-        Nominee nominee1 = new Nominee("Peter");
-        Nominee nominee2 = new Nominee("Kate");
-        Nominee nominee3 = new Nominee("Ann");
+        Nominee nominee1 = new Nominee("Peter", Type.NOMINEE);
+        Nominee nominee2 = new Nominee("Kate", Type.NOMINEE);
+        Nominee nominee3 = new Nominee("Ann", Type.NOMINEE);
 
-        Nominator nominator21 = new Nominator("Paul");
+        Nominator nominator21 = new Nominator("Paul", Type.NOMINATOR);
 
 
         myHelper.nominate(goodJobAward1, nominee1, nominator21);
@@ -138,9 +139,9 @@ public class Main {
         myHelper.nominate(goodJobAward1, nomineeWithLimits4, nominator2WithLimits4);
 
 
-        Nominee nominee1 = new Nominee("Peter");
-        Nominee nominee2 = new Nominee("Kate");
-        Nominee nominee3 = new Nominee("Ann");
+        Nominee nominee1 = new Nominee("Peter", Type.NOMINEE);
+        Nominee nominee2 = new Nominee("Kate", Type.NOMINEE);
+        Nominee nominee3 = new Nominee("Ann", Type.NOMINEE);
 
 
         List<Nominee> dreamTeam = new ArrayList<Nominee>();
@@ -153,10 +154,10 @@ public class Main {
     }
 
     private static void inheritanceTask() {
-        Nominator nominator = new Nominator("Default Ivan");
+        Nominator nominator = new Nominator("Default Ivan", Type.NOMINATOR);
         nominator.login();
 
-        Nominee nominee = new Nominee("Default Ivan");
+        Nominee nominee = new Nominee("Default Ivan", Type.NOMINEE);
         nominee.login();
     }
 }

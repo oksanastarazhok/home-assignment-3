@@ -1,6 +1,7 @@
 package nominator;
 
 import person.Person;
+import person.Type;
 
 /**
  * Nominator object for giving a nomination to nominee
@@ -21,10 +22,14 @@ public class Nominator extends Person {
      *Constructor for Nominator object WITHOUT limits
      * @param name name name of Nominator
          */
-    public Nominator(String name) {
+    private Nominator(String name) {
         super(name);
         this.isManager = true;
+    }
 
+    public Nominator(String name, Type role) {
+        this(name);
+        super.role = role;
     }
 
     /**
@@ -38,11 +43,4 @@ public class Nominator extends Person {
         super(name, awardQuantityLimit, awardAmountLimit);
         this.isManager = true;
     }
-
-    @Override
-    public void login() {
-        super.login();
-    }
-
-
 }
