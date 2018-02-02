@@ -10,7 +10,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         //taskWithFormula();
-       // taskWithLoops();
+        // taskWithLoops();
         inheritanceTask();
 
 
@@ -154,10 +154,10 @@ public class Main {
     }
 
     private static void inheritanceTask() {
-        Nominator nominator = new Nominator("Default Ivan", Type.NOMINATOR);
+        Nominator nominator = new Nominator("Nominator Ivan", Type.NOMINATOR);
         nominator.login();
 
-        Nominee nominee = new Nominee("Default Ivan", Type.NOMINEE);
+        Nominee nominee = new Nominee("Nominee Petr", Type.NOMINEE);
         nominee.login();
     }
 }

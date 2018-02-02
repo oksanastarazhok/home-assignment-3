@@ -1,17 +1,13 @@
 package person;
 
-public abstract class Person {
-
-    private String name;
-
-    public Type role;
+public abstract class Person implements OperationsWithLimit {
 
     /**
      * If it equals 0, than Person has no limits, otherwise it equals awardQuantityLimit
      */
     private final int constantAwardQuantityLimit;
-
-
+    public Type role;
+    private String name;
     /**
      * if true, shows that Person can give/receive unlimited sum of money, otherwise amount is restricted
      */
@@ -32,7 +28,6 @@ public abstract class Person {
     private double awardAmountLimit;
 
 
-
     /**
      * Constructor for Person WITHOUT limits
      *
@@ -44,7 +39,6 @@ public abstract class Person {
         this.noLimitQnt = true;
         this.constantAwardQuantityLimit = 0;
     }
-
 
 
     /**
@@ -65,7 +59,7 @@ public abstract class Person {
     /**
      * This method is used to show override in action.
      */
-    public void login(){
+    public void login() {
         System.out.println("This method should demonstrate override in action. This method wasn't overridden in Nominator Class.");
     }
 
@@ -113,4 +107,8 @@ public abstract class Person {
         this.noLimitQnt = noLimitQnt;
     }
 
+
+    public boolean isLimitReached() {
+        return false;
+    }
 }

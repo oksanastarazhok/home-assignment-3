@@ -19,9 +19,10 @@ public class Nominator extends Person {
 
 
     /**
-     *Constructor for Nominator object WITHOUT limits
+     * Constructor for Nominator object WITHOUT limits
+     *
      * @param name name name of Nominator
-         */
+     */
     private Nominator(String name) {
         super(name);
         this.isManager = true;
@@ -33,14 +34,20 @@ public class Nominator extends Person {
     }
 
     /**
-     *Constructor for Nominator object WITH limits
-     * @param name name name of Nominator
-     * @param awardQuantityLimit Shows how much awards Nominator can give
-     * @param awardAmountLimit Shows the max sum that Nominator can give
+     * Constructor for Nominator object WITH limits
      *
+     * @param name               name name of Nominator
+     * @param awardQuantityLimit Shows how much awards Nominator can give
+     * @param awardAmountLimit   Shows the max sum that Nominator can give
      */
     public Nominator(String name, int awardQuantityLimit, double awardAmountLimit) {
         super(name, awardQuantityLimit, awardAmountLimit);
         this.isManager = true;
+    }
+
+    @Override
+    public void login() {
+        System.out.printf("%s logged in.%n", Nominator.this.getName());
+        ;
     }
 }

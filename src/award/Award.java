@@ -10,7 +10,6 @@ public class Award {
     }
 
 
-
     private final int value;
     /**
      * Standard of Living Index.
@@ -18,7 +17,6 @@ public class Award {
      * socioeconomic class in a certain geographic area, usually a country.
      */
     private double soli;
-
 
 
     /**
@@ -40,7 +38,6 @@ public class Award {
         this.value = value;
         this.soli = soli;
     }
-
 
 
     public int getValue() {

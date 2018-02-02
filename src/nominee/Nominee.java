@@ -50,7 +50,16 @@ public class Nominee extends Person {
 
     @Override
     public void login() {
-        System.out.printf("%s logged in.%n", Nominee.this.getName());;
+        System.out.printf("%s logged in.%n", Nominee.this.getName());
+
+    }
+
+    public boolean isLimitReached(int awardQuantityLimit, double awardAmountLimit, int currentQuantityLimit, double currentAmountLimit) {
+        if (currentQuantityLimit >= awardQuantityLimit || currentAmountLimit >= awardAmountLimit) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public List<Award> getAward1ListWithoutSoli() {
