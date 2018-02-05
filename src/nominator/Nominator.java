@@ -50,4 +50,6 @@ public class Nominator extends Person {
         System.out.printf("%s logged in.%n", Nominator.this.getName());
         ;
     }
+
+
 }

@@ -16,11 +16,11 @@ public class Nominee extends Person {
         System.out.println("An instance of Nominee class was initialized");
     }
 
-
     /**
      * Contains a list of values counted according to the formula for the awards without soli
      */
     private final List<Double> quantity = new ArrayList<Double>();
+    private int currValue = 0;
     /**
      * Contains a List of Award object for each Nominee
      */
@@ -46,6 +46,7 @@ public class Nominee extends Person {
      */
     public Nominee(String name, int awardQuantityLimit, double awardAmountLimit) {
         super(name, awardQuantityLimit, awardAmountLimit);
+        super.role = Type.NOMINEE;
     }
 
     @Override
@@ -54,13 +55,6 @@ public class Nominee extends Person {
 
     }
 
-    public boolean isLimitReached(int awardQuantityLimit, double awardAmountLimit, int currentQuantityLimit, double currentAmountLimit) {
-        if (currentQuantityLimit >= awardQuantityLimit || currentAmountLimit >= awardAmountLimit) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public List<Award> getAward1ListWithoutSoli() {
         return (award1ListWithoutSoli);
@@ -68,6 +62,14 @@ public class Nominee extends Person {
 
     public List<Double> getQuantity() {
         return quantity;
+    }
+
+    public int getCurrValue() {
+        return currValue;
+    }
+
+    public void setCurrValue(int currValue) {
+        this.currValue = currValue;
     }
 }
 

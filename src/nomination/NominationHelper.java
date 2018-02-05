@@ -59,6 +59,7 @@ public class NominationHelper {
 
             nomineeInstance.getAward1ListWithoutSoli().add(award1Instance);
 
+
         }
     }
 
@@ -76,12 +77,14 @@ public class NominationHelper {
         if (nominatorInstance.isNoLimitAmt() && nominatorInstance.isNoLimitQnt() && nomineeInstance.isNoLimitAmt() && nomineeInstance.isNoLimitQnt()) {
 
             receiveAward(awardInstance, nomineeInstance);
-        } else if (nominatorInstance.isNoLimitAmt() && nominatorInstance.isNoLimitQnt()) {
-            if (nomineeInstance.getAwardQuantityLimit() > 0) {
-                if (nomineeInstance.getAwardAmountLimit() >= awardInstance.getValue()) {
+        } else if (nominatorInstance.isNoLimitQnt()) {
+                if (nomineeInstance.getAwardQuantityLimit() > 0) {
+                //if (nomineeInstance.getAwardAmountLimit() >= awardInstance.getValue()) {
+                if (!nomineeInstance.isLimitReached(nomineeInstance.getAwardQuantityLimit(), nomineeInstance.getCurrValue())) {
                     receiveAward(awardInstance, nomineeInstance);
+                    nomineeInstance.setCurrValue(nomineeInstance.getCurrValue() + 1);
                     nomineeInstance.setAwardQuantityLimit(nomineeInstance.getAwardQuantityLimit() - 1);
-                    nomineeInstance.setAwardAmountLimit(nomineeInstance.getAwardAmountLimit() - awardInstance.getValue());
+                    //nomineeInstance.setAwardAmountLimit(nomineeInstance.getAwardAmountLimit() - awardInstance.getValue());
                 } else {
                     limitReached("nomineeAmountLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getAwardQuantityLimit());
                 }
@@ -102,10 +105,10 @@ public class NominationHelper {
                 limitReached("nominatorQuantityLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getAwardQuantityLimit());
             }
         } else {
-            if (nominatorInstance.getAwardQuantityLimit() > 0) {
+            //if (nominatorInstance.getAwardQuantityLimit() > 0) {
                 if (nominatorInstance.getAwardAmountLimit() >= awardInstance.getValue()) {
-                    if (nomineeInstance.getAwardQuantityLimit() > 0) {
-                        if (nomineeInstance.getAwardAmountLimit() >= awardInstance.getValue()) {
+                    //if (nomineeInstance.getAwardQuantityLimit() > 0) {
+                        if (nomineeInstance.getAwardAmountLimit() >= awardInstance.getValue() && !nomineeInstance.isLimitReached(nomineeInstance.getAwardQuantityLimit(), nomineeInstance.getCurrValue())) {
                             receiveAward(awardInstance, nomineeInstance);
                             nominatorInstance.setAwardQuantityLimit(nominatorInstance.getAwardQuantityLimit() - 1);
                             nomineeInstance.setAwardQuantityLimit(nomineeInstance.getAwardQuantityLimit() - 1);
@@ -113,15 +116,15 @@ public class NominationHelper {
                         } else {
                             limitReached("nomineeAmountLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getAwardQuantityLimit());
                         }
-                    } else {
+                   /* } else {
                         limitReached("nomineeQuantityLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getAwardQuantityLimit());
-                    }
+                    }*/
                 } else {
                     limitReached("nominatorAmountLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getAwardQuantityLimit());
                 }
-            } else {
+            /*} else {
                 limitReached("nominatorQuantityLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getAwardQuantityLimit());
-            }
+            }*/
         }
     }
 

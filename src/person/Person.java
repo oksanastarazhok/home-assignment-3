@@ -108,7 +108,8 @@ public abstract class Person implements OperationsWithLimit {
     }
 
 
-    public boolean isLimitReached() {
-        return false;
+    public boolean isLimitReached(int awardQuantityLimit, int currentQuantityLimit) {
+        return currentQuantityLimit == awardQuantityLimit ;
     }
+
 }

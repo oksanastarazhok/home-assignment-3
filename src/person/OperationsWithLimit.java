@@ -2,5 +2,5 @@ package person;
 
 public interface OperationsWithLimit {
 
-    boolean isLimitReached();
+    boolean isLimitReached(int awardQuantityLimit, int currentQuantityLimit);
 }
