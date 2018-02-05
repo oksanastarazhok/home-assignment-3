@@ -56,7 +56,7 @@ public class NominationHelper {
             }
         } else {
             System.out.println("Award value: " + award1Instance.getValue() + " Award value wasn't converted.");
-
+            nomineeInstance.setCurrValue(nomineeInstance.getCurrValue() + 1);
             nomineeInstance.getAward1ListWithoutSoli().add(award1Instance);
 
 
@@ -75,58 +75,36 @@ public class NominationHelper {
         System.out.println("Nominee: " + nomineeInstance.getName());
 
         if (nominatorInstance.isNoLimitAmt() && nominatorInstance.isNoLimitQnt() && nomineeInstance.isNoLimitAmt() && nomineeInstance.isNoLimitQnt()) {
-
             receiveAward(awardInstance, nomineeInstance);
-        } else if (nominatorInstance.isNoLimitQnt()) {
-                if (nomineeInstance.getAwardQuantityLimit() > 0) {
-                //if (nomineeInstance.getAwardAmountLimit() >= awardInstance.getValue()) {
+        } else {
+            if (nominatorInstance.isNoLimitQnt()) {
                 if (!nomineeInstance.isLimitReached(nomineeInstance.getAwardQuantityLimit(), nomineeInstance.getCurrValue())) {
                     receiveAward(awardInstance, nomineeInstance);
-                    nomineeInstance.setCurrValue(nomineeInstance.getCurrValue() + 1);
-                    nomineeInstance.setAwardQuantityLimit(nomineeInstance.getAwardQuantityLimit() - 1);
-                    //nomineeInstance.setAwardAmountLimit(nomineeInstance.getAwardAmountLimit() - awardInstance.getValue());
                 } else {
-                    limitReached("nomineeAmountLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getAwardQuantityLimit());
+                    limitReached("nomineeQuantityLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getAwardQuantityLimit());
                 }
-            } else {
-                limitReached("nomineeQuantityLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getAwardQuantityLimit());
-            }
-        } else if (nomineeInstance.isNoLimitAmt() && nomineeInstance.isNoLimitQnt()) {
-            if (nominatorInstance.getAwardQuantityLimit() > 0) {
-                if (nominatorInstance.getAwardAmountLimit() >= awardInstance.getValue()) {
+            } else if (nomineeInstance.isNoLimitQnt()) {
+                if (!nominatorInstance.isLimitReached(nominatorInstance.getAwardQuantityLimit(), nominatorInstance.getCurrValue())) {
                     receiveAward(awardInstance, nomineeInstance);
-                    nominatorInstance.setAwardQuantityLimit(nominatorInstance.getAwardQuantityLimit() - 1);
-                    nominatorInstance.setAwardAmountLimit(nominatorInstance.getAwardAmountLimit() - awardInstance.getValue());
-
+                    nominatorInstance.setCurrValue(nominatorInstance.getCurrValue() + 1);
                 } else {
-                    limitReached("nominatorAmountLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getAwardQuantityLimit());
+                    limitReached("nominatorQuantityLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getAwardQuantityLimit());
                 }
             } else {
-                limitReached("nominatorQuantityLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getAwardQuantityLimit());
-            }
-        } else {
-            //if (nominatorInstance.getAwardQuantityLimit() > 0) {
-                if (nominatorInstance.getAwardAmountLimit() >= awardInstance.getValue()) {
-                    //if (nomineeInstance.getAwardQuantityLimit() > 0) {
-                        if (nomineeInstance.getAwardAmountLimit() >= awardInstance.getValue() && !nomineeInstance.isLimitReached(nomineeInstance.getAwardQuantityLimit(), nomineeInstance.getCurrValue())) {
-                            receiveAward(awardInstance, nomineeInstance);
-                            nominatorInstance.setAwardQuantityLimit(nominatorInstance.getAwardQuantityLimit() - 1);
-                            nomineeInstance.setAwardQuantityLimit(nomineeInstance.getAwardQuantityLimit() - 1);
-                            nomineeInstance.setAwardAmountLimit(nomineeInstance.getAwardAmountLimit() - awardInstance.getValue());
-                        } else {
-                            limitReached("nomineeAmountLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getAwardQuantityLimit());
-                        }
-                   /* } else {
+                if (!nominatorInstance.isLimitReached(nominatorInstance.getAwardQuantityLimit(), nominatorInstance.getCurrValue())) {
+                    if (!nomineeInstance.isLimitReached(nomineeInstance.getAwardQuantityLimit(), nomineeInstance.getCurrValue())) {
+                        receiveAward(awardInstance, nomineeInstance);
+                        nominatorInstance.setCurrValue(nominatorInstance.getCurrValue() + 1);
+                    } else {
                         limitReached("nomineeQuantityLimit", nomineeInstance.getName(), nomineeInstance.getConstantAwardQuantityLimit() - nomineeInstance.getAwardQuantityLimit());
-                    }*/
+                    }
                 } else {
-                    limitReached("nominatorAmountLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getAwardQuantityLimit());
+                    limitReached("nominatorQuantityLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getAwardQuantityLimit());
                 }
-            /*} else {
-                limitReached("nominatorQuantityLimit", nominatorInstance.getName(), nominatorInstance.getConstantAwardQuantityLimit() - nominatorInstance.getAwardQuantityLimit());
-            }*/
+            }
         }
     }
+
 
     /**
      * Method counts the value for awards with soli according to the following formula:

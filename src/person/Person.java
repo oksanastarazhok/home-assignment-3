@@ -50,7 +50,7 @@ public abstract class Person implements OperationsWithLimit {
      */
     public Person(String name, int awardQuantityLimit, double awardAmountLimit) {
         this.name = name;
-        this.awardAmountLimit = awardQuantityLimit;
+        this.awardQuantityLimit = awardQuantityLimit;
         this.awardAmountLimit = awardAmountLimit;
         this.constantAwardQuantityLimit = awardQuantityLimit;
     }

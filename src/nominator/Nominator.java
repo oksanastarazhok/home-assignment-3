@@ -16,6 +16,7 @@ public class Nominator extends Person {
      * Should be set to True to be able to give awards
      */
     private boolean isManager;
+    private int currValue = 0;
 
 
     /**
@@ -51,5 +52,11 @@ public class Nominator extends Person {
         ;
     }
 
+    public int getCurrValue() {
+        return currValue;
+    }
 
+    public void setCurrValue(int currValue) {
+        this.currValue = currValue;
+    }
 }
