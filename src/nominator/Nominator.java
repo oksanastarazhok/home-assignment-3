@@ -17,8 +17,6 @@ public class Nominator extends Person {
      */
     private boolean isManager;
 
-
-
     /**
      * Constructor for Nominator object WITHOUT limits
      *

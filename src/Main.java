@@ -2,6 +2,7 @@ import award.Award;
 import nomination.NominationHelper;
 import nominator.Nominator;
 import nominee.Nominee;
+import person.Person;
 import person.Type;
 
 import java.util.ArrayList;
@@ -12,16 +13,26 @@ public class Main {
         //taskWithFormula();
         // taskWithLoops();
         //inheritanceTask();
-        abstractTask();
+        //abstractTask();
+        polymorphismTask();
+    }
 
+    private static void polymorphismTask() {
+        Award perfectAward1 = new Award(10);
 
+        Person nominee1 = new Nominee("Peter", Type.NOMINEE);
+        Person nominee2 = new Nominee("Kate", Type.NOMINEE);
+
+        Person nominator  = new Nominator("Paul", Type.NOMINATOR);
+
+        NominationHelper nominationHelper = new NominationHelper();
+        nominationHelper.nominate(perfectAward1, nominee1, nominator);
     }
 
     private static void abstractTask() {
-        Nominee nominee1 = new Nominee("Peter", 10, 100 );
+        Nominee nominee1 = new Nominee("Peter", 10, 100);
         Nominee nominee2 = new Nominee("Kate", 5, 50);
         Nominee nominee3 = new Nominee("Ann", 1, 10);
-
 
         Award goodJobAward1 = new Award(10);
 
@@ -29,12 +40,10 @@ public class Main {
         Nominator nominator1WithLimits = new Nominator("Federico", 1, 10);
 
         NominationHelper nominationHelper = new NominationHelper();
-        nominationHelper.nominate(goodJobAward1,nominee3,nominator2WithLimits);
-        nominationHelper.nominate(goodJobAward1,nominee2,nominator2WithLimits);
-        nominationHelper.nominate(goodJobAward1,nominee3,nominator2WithLimits);
-        nominationHelper.nominate(goodJobAward1,nominee3,nominator1WithLimits);
-
-
+        nominationHelper.nominate(goodJobAward1, nominee3, nominator2WithLimits);
+        nominationHelper.nominate(goodJobAward1, nominee2, nominator2WithLimits);
+        nominationHelper.nominate(goodJobAward1, nominee3, nominator2WithLimits);
+        nominationHelper.nominate(goodJobAward1, nominee3, nominator1WithLimits);
     }
 
 

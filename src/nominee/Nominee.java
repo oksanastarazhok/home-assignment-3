@@ -36,7 +36,6 @@ public class Nominee extends Person {
         super.role = role;
     }
 
-
     /**
      * Constructor for Nominee object with limits
      *
@@ -54,7 +53,6 @@ public class Nominee extends Person {
         System.out.printf("%s logged in.%n", Nominee.this.getName());
 
     }
-
 
     public List<Award> getAward1ListWithoutSoli() {
         return (award1ListWithoutSoli);
