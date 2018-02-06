@@ -20,7 +20,7 @@ public class Nominee extends Person {
      * Contains a list of values counted according to the formula for the awards without soli
      */
     private final List<Double> quantity = new ArrayList<Double>();
-    private int currValue = 0;
+
     /**
      * Contains a List of Award object for each Nominee
      */
@@ -64,13 +64,7 @@ public class Nominee extends Person {
         return quantity;
     }
 
-    public int getCurrValue() {
-        return currValue;
-    }
 
-    public void setCurrValue(int currValue) {
-        this.currValue = currValue;
-    }
 }
 
 

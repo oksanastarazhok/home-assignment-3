@@ -8,6 +8,7 @@ public abstract class Person implements OperationsWithLimit {
     private final int constantAwardQuantityLimit;
     public Type role;
     private String name;
+    private int currValue;
     /**
      * if true, shows that Person can give/receive unlimited sum of money, otherwise amount is restricted
      */
@@ -38,6 +39,7 @@ public abstract class Person implements OperationsWithLimit {
         this.noLimitAmt = true;
         this.noLimitQnt = true;
         this.constantAwardQuantityLimit = 0;
+
     }
 
 
@@ -53,6 +55,7 @@ public abstract class Person implements OperationsWithLimit {
         this.awardQuantityLimit = awardQuantityLimit;
         this.awardAmountLimit = awardAmountLimit;
         this.constantAwardQuantityLimit = awardQuantityLimit;
+        this.currValue = 0;
     }
 
 
@@ -112,4 +115,11 @@ public abstract class Person implements OperationsWithLimit {
         return currentQuantityLimit == awardQuantityLimit ;
     }
 
+    public int getCurrValue() {
+        return currValue;
+    }
+
+    public void setCurrValue(int currValue) {
+        this.currValue = currValue;
+    }
 }
