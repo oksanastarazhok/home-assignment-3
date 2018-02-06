@@ -20,17 +20,19 @@ public class Main {
     private static void abstractTask() {
         Nominee nominee1 = new Nominee("Peter", 10, 100 );
         Nominee nominee2 = new Nominee("Kate", 5, 50);
-        Nominee nominee3 = new Nominee("Ann", 2, 10);
+        Nominee nominee3 = new Nominee("Ann", 1, 10);
 
 
         Award goodJobAward1 = new Award(10);
 
-        Nominator nominator2WithLimits = new Nominator("Karl", 1, 1000);
+        Nominator nominator2WithLimits = new Nominator("Karl", 2, 1000);
+        Nominator nominator1WithLimits = new Nominator("Federico", 1, 10);
 
         NominationHelper nominationHelper = new NominationHelper();
         nominationHelper.nominate(goodJobAward1,nominee3,nominator2WithLimits);
+        nominationHelper.nominate(goodJobAward1,nominee2,nominator2WithLimits);
         nominationHelper.nominate(goodJobAward1,nominee3,nominator2WithLimits);
-
+        nominationHelper.nominate(goodJobAward1,nominee3,nominator1WithLimits);
 
 
     }
