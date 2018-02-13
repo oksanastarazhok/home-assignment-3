@@ -18,7 +18,7 @@ public class Nominator extends Person {
     private boolean isManager;
 
     /**
-     * Constructor for Nominator object WITHOUT limits
+     * Private constructor for Nominator object WITHOUT limits
      *
      * @param name name name of Nominator
      */
@@ -26,7 +26,11 @@ public class Nominator extends Person {
         super(name);
         this.isManager = true;
     }
-
+    /**
+     * Constructor for Nominator object WITHOUT limits
+     *
+     * @param name name name of Nominator
+     */
     public Nominator(String name, Type role) {
         this(name);
         super.role = role;
@@ -43,6 +47,10 @@ public class Nominator extends Person {
         super(name, awardQuantityLimit, awardAmountLimit);
         this.isManager = true;
     }
+
+    /**
+     * This method is used to print information about a logged in person.
+     */
 
     @Override
     public void login() {

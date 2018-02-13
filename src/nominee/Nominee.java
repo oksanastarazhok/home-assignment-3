@@ -63,6 +63,14 @@ public class Nominee extends Person {
     }
 
 
+    /**
+     * This method is used to show override in action. It prints information about Nominee.
+     */
+    public void printInfo() {
+        System.out.println("Nominee " + this.getName() + " can receive awards. Currently there are " +
+                this.getAward1ListWithoutSoli().size() + " awards available for redemption.");
+    }
 }
+
 
 

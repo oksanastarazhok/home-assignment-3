@@ -17,16 +17,30 @@ public class Main {
         polymorphismTask();
     }
 
+    /**
+     * This method is used to demonstrate overriding and overloading.
+     * It creates objects of the following Classes: Person, Award and prints info about them.     *
+     */
     private static void polymorphismTask() {
-        Award perfectAward1 = new Award(10);
+        Award perfectAward = new Award(10);
+        Award excellentAward = new Award(300);
 
         Person nominee1 = new Nominee("Peter", Type.NOMINEE);
         Person nominee2 = new Nominee("Kate", Type.NOMINEE);
 
-        Person nominator  = new Nominator("Paul", Type.NOMINATOR);
+        Person nominator = new Nominator("Paul", Type.NOMINATOR);
 
         NominationHelper nominationHelper = new NominationHelper();
-        nominationHelper.nominate(perfectAward1, nominee1, nominator);
+        nominationHelper.nominate(perfectAward, nominee1, nominator);
+        nominationHelper.nominate(excellentAward, nominee2, nominator);
+        nominationHelper.nominate(excellentAward, nominee2, nominator);
+
+        nominee1.printInfo();
+        nominee2.printInfo();
+        nominee1.printInfo(nominator);
+        nominator.printInfo();
+
+
     }
 
     private static void abstractTask() {

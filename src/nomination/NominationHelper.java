@@ -3,6 +3,7 @@ package nomination;
 import award.Award;
 import nominator.Nominator;
 import nominee.Nominee;
+import person.Person;
 
 import java.util.List;
 
@@ -40,7 +41,6 @@ public class NominationHelper {
     /**
      * Method checks if an award has soli. If there is a soli, it counts how much it was changed in in percentage terms
      * and prints the value. If there is no soli, it prints the award initial value.
-     *
      * @param award1Instance  Award object
      * @param nomineeInstance Nominee object
      */
@@ -71,21 +71,21 @@ public class NominationHelper {
      * @param nomineeInstance   Nominee object Nominee object
      * @param nominatorInstance Nominator object Nominator object
      */
-    public void nominate(Award awardInstance, Nominee nomineeInstance, Nominator nominatorInstance) {
+    public void nominate(Award awardInstance, Person nomineeInstance, Person nominatorInstance) {
         System.out.println("Nominee: " + nomineeInstance.getName());
 
         if (nominatorInstance.isNoLimitAmt() && nominatorInstance.isNoLimitQnt() && nomineeInstance.isNoLimitAmt() && nomineeInstance.isNoLimitQnt()) {
-            receiveAward(awardInstance, nomineeInstance);
+            receiveAward(awardInstance, (Nominee) nomineeInstance);
         } else {
             if (nominatorInstance.isNoLimitQnt()) {
                 if (!nomineeInstance.isLimitReached(nomineeInstance.getAwardQuantityLimit(), nomineeInstance.getCurrValue())) {
-                    receiveAward(awardInstance, nomineeInstance);
+                    receiveAward(awardInstance, (Nominee) nomineeInstance);
                 } else {
                     limitReached("nomineeQuantityLimit", nomineeInstance.getName(), nomineeInstance.getCurrValue());
                 }
             } else if (nomineeInstance.isNoLimitQnt()) {
                 if (!nominatorInstance.isLimitReached(nominatorInstance.getAwardQuantityLimit(), nominatorInstance.getCurrValue())) {
-                    receiveAward(awardInstance, nomineeInstance);
+                    receiveAward(awardInstance, (Nominee) nomineeInstance);
                     nominatorInstance.setCurrValue(nominatorInstance.getCurrValue() + 1);
                 } else {
                     limitReached("nominatorQuantityLimit", nominatorInstance.getName(), nominatorInstance.getCurrValue());
@@ -93,7 +93,7 @@ public class NominationHelper {
             } else {
                 if (!nominatorInstance.isLimitReached(nominatorInstance.getAwardQuantityLimit(), nominatorInstance.getCurrValue())) {
                     if (!nomineeInstance.isLimitReached(nomineeInstance.getAwardQuantityLimit(), nomineeInstance.getCurrValue())) {
-                        receiveAward(awardInstance, nomineeInstance);
+                        receiveAward(awardInstance, (Nominee) nomineeInstance);
                         nominatorInstance.setCurrValue(nominatorInstance.getCurrValue() + 1);
                     } else {
                         limitReached("nomineeQuantityLimit", nomineeInstance.getName(), nomineeInstance.getCurrValue());

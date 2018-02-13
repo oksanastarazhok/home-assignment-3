@@ -1,5 +1,8 @@
 package person;
 
+import nominator.Nominator;
+import nominee.Nominee;
+
 public abstract class Person implements OperationsWithLimit {
 
     /**
@@ -21,8 +24,6 @@ public abstract class Person implements OperationsWithLimit {
      * Shows how much awards Nominator can receive
      */
     private int awardQuantityLimit;
-
-
     /**
      * Shows the max sum that Nominator can receive
      */
@@ -65,6 +66,22 @@ public abstract class Person implements OperationsWithLimit {
     public void login() {
         System.out.println("This method should demonstrate override in action. This method wasn't overridden in Nominator Class.");
     }
+
+    /**
+     * This method is used to show overload in action. It prints information about Nominator.
+     * @param nominator Object of Class Nominator that can give awards
+     */
+    public void printInfo(Person nominator) {
+        System.out.println("Nominator " + nominator.getName() + " is a manager. Currently manager cannot receive awards.");
+    }
+
+    /**
+     * This method is used to show overload in action. It is overridden in Nominee Class .
+     */
+    public void printInfo() {
+        System.out.println("Method wasn't implemented in the child class.");
+    }
+
 
     public String getName() {
         return name;
@@ -112,7 +129,7 @@ public abstract class Person implements OperationsWithLimit {
 
 
     public boolean isLimitReached(int awardQuantityLimit, int currentQuantityLimit) {
-        return currentQuantityLimit == awardQuantityLimit ;
+        return currentQuantityLimit == awardQuantityLimit;
     }
 
     public int getCurrValue() {
