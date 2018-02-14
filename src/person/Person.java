@@ -72,14 +72,14 @@ public abstract class Person implements OperationsWithLimit {
      * @param nominator Object of Class Nominator that can give awards
      */
     public void printInfo(Person nominator) {
-        System.out.println("Nominator " + nominator.getName() + " is a manager. Currently manager cannot receive awards.");
+        System.out.println("\n Nominator " + nominator.getName() + " is a manager. Currently manager cannot receive awards.");
     }
 
     /**
      * This method is used to show overload in action. It is overridden in Nominee Class .
      */
     public void printInfo() {
-        System.out.println("Method wasn't implemented in the child class.");
+        System.out.println("\n Method wasn't implemented in the child class.");
     }
 
 

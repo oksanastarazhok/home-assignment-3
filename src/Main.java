@@ -15,8 +15,32 @@ public class Main {
         //inheritanceTask();
         //abstractTask();
         polymorphismTask();
+        exceptionTask();
     }
 
+
+    /**
+     * This method is used to demonstrate custom Exception.
+     */
+    public static void exceptionTask(){
+        Award perfectAward = new Award(10);
+        Award excellentAward = new Award(-300);
+
+        Person nominee1 = new Nominee("Gerbert", Type.NOMINEE);
+        Person nominee2 = new Nominee("Tom", Type.NOMINEE);
+
+        Person nominator = new Nominator("Adam", Type.NOMINATOR);
+
+        NominationHelper nominationHelper = new NominationHelper();
+        nominationHelper.nominate(perfectAward, nominee1, nominator);
+        nominationHelper.nominate(excellentAward, nominee2, nominator);
+        nominationHelper.nominate(excellentAward, nominee2, nominator);
+
+        System.out.println("\n******************************************");
+        nominee1.printInfo();
+        nominee2.printInfo();
+
+    }
     /**
      * This method is used to demonstrate overriding and overloading.
      * It creates objects of the following Classes: Person, Award and prints info about them.     *
