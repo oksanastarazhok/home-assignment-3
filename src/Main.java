@@ -23,7 +23,7 @@ public class Main {
     /**
      * This method is used to demonstrate custom Exception.
      */
-    public static void exceptionTask() throws NegativeValueAwardException {
+    public static void exceptionTask() {
         Award perfectAward = new Award(10);
         Award excellentAward = new Award(-300);
 

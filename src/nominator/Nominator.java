@@ -58,5 +58,8 @@ public class Nominator extends Person {
         ;
     }
 
-
+    /*@Override
+    public void printInfo() {
+        System.out.println("It is nominator");
+    }*/
 }
