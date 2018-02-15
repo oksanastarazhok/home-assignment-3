@@ -69,10 +69,10 @@ public abstract class Person implements OperationsWithLimit {
 
     /**
      * This method is used to show overload in action. It prints information about Nominator.
-     * @param nominator Object of Class Nominator that can give awards
+     * @param person Object of Class Nominator that can give awards
      */
-    public void printInfo(Person nominator) {
-        System.out.println("\n Nominator " + nominator.getName() + " is a manager. Currently manager cannot receive awards.");
+    public void printInfo(Person person) {
+        System.out.println("Error" + person.getName() + "-" + person.role);
     }
 
     /**

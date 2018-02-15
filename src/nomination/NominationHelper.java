@@ -1,7 +1,7 @@
 package nomination;
 
 import award.Award;
-import customExceptions.NegativeValueAwardException;
+import exceptions.NegativeValueAwardException;
 import nominator.Nominator;
 import nominee.Nominee;
 import person.Person;
@@ -72,20 +72,19 @@ public class NominationHelper {
      * @param nomineeInstance   Nominee object Nominee object
      * @param nominatorInstance Nominator object Nominator object
      */
-    public void nominate(Award awardInstance, Person nomineeInstance, Person nominatorInstance) {
+    public void nominate(Award awardInstance, Person nomineeInstance, Person nominatorInstance) throws NegativeValueAwardException {
         System.out.println("Nominee: " + nomineeInstance.getName());
 
         if (nominatorInstance.isNoLimitAmt() && nominatorInstance.isNoLimitQnt() && nomineeInstance.isNoLimitAmt() && nomineeInstance.isNoLimitQnt()) {
-            try{
-                if(awardInstance.getValue()< 0)
-                    throw new NegativeValueAwardException();
-                else
+            //try{
+                if(awardInstance.getValue()< 0) {
+                    throw new NegativeValueAwardException("Impossible to send your award as it has negative value. Please, change award value and try again.");
+                } else {
                     receiveAward(awardInstance, (Nominee) nomineeInstance);
             }
-            catch (NegativeValueAwardException ex){
+            /*catch (NegativeValueAwardException ex){
                 System.out.println(ex);
-            }
-
+            }*/
 
 
         } else {
