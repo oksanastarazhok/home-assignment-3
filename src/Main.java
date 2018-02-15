@@ -36,7 +36,7 @@ public class Main {
         nominationHelper.nominate(excellentAward, nominee2, nominator);
         nominationHelper.nominate(excellentAward, nominee2, nominator);
 
-        System.out.println("\n******************************************");
+
         nominee1.printInfo();
         nominee2.printInfo();
 
