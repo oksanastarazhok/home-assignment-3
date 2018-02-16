@@ -19,7 +19,6 @@ public class Award {
 
     /**
      * Constructor for award object WITHOUT soli
-     *
      * @param value award value
      */
     public Award(int value) {

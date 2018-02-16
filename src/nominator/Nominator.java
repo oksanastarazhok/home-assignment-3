@@ -12,10 +12,6 @@ public class Nominator extends Person {
         System.out.println("An instance of Nominator class was initialized");
     }
 
-    /**
-     * Should be set to True to be able to give awards
-     */
-    private boolean isManager;
 
     /**
      * Private constructor for Nominator object WITHOUT limits
@@ -24,12 +20,13 @@ public class Nominator extends Person {
      */
     private Nominator(String name) {
         super(name);
-        this.isManager = true;
     }
+
     /**
      * Constructor for Nominator object WITHOUT limits
      *
-     * @param name name name of Nominator
+     * @param name name of Nominator
+     * @param role role could be NOMINATOR or NOMINEE
      */
     public Nominator(String name, Type role) {
         this(name);
@@ -45,7 +42,6 @@ public class Nominator extends Person {
      */
     public Nominator(String name, int awardQuantityLimit, double awardAmountLimit) {
         super(name, awardQuantityLimit, awardAmountLimit);
-        this.isManager = true;
     }
 
     /**
@@ -58,6 +54,9 @@ public class Nominator extends Person {
         ;
     }
 
+    /**
+     * This method is used to show override in action. It prints information about Nominator.
+     */
     @Override
     public void printInfo() {
         System.out.println("It is nominator");

@@ -16,13 +16,13 @@ public class Main {
         // taskWithLoops();
         //inheritanceTask();
         //abstractTask();
-       // polymorphismTask();
+        // polymorphismTask();
         exceptionTask();
     }
 
 
     /**
-     * This method is used to demonstrate custom Exception.
+     * This method is used to demonstrate custom Exceptions: NegativeValueAwardException and NegativeSoliException.
      */
     public static void exceptionTask() {
         Award perfectAward = new Award(10, -2);
@@ -41,16 +41,18 @@ public class Main {
 
         } catch (NegativeValueAwardException e) {
             System.out.println(e);
-        }catch(NegativeSoliException e){
+        } catch (NegativeSoliException e) {
             System.out.println(e);
         }
 
 
+    }
 
-            }
     /**
      * This method is used to demonstrate overriding and overloading.
-     * It creates objects of the following Classes: Person, Award and prints info about them.     *
+     * It creates objects of the following Classes: Person, Award and prints info about them.
+     *
+     * @throws NegativeValueAwardException will be thrown if user will try to give an award with negative value.
      */
     private static void polymorphismTask() throws NegativeValueAwardException {
         Award perfectAward = new Award(10);
@@ -62,11 +64,11 @@ public class Main {
         Person nominator = new Nominator("Paul", Type.NOMINATOR);
 
         NominationHelper nominationHelper = new NominationHelper();
-        try{
-        nominationHelper.nominate(perfectAward, nominee1, nominator);
-        nominationHelper.nominate(excellentAward, nominee2, nominator);
-        nominationHelper.nominate(excellentAward, nominee2, nominator);}
-        catch (NegativeSoliException e){
+        try {
+            nominationHelper.nominate(perfectAward, nominee1, nominator);
+            nominationHelper.nominate(excellentAward, nominee2, nominator);
+            nominationHelper.nominate(excellentAward, nominee2, nominator);
+        } catch (NegativeSoliException e) {
             System.out.println(e);
         }
 
@@ -78,6 +80,13 @@ public class Main {
 
     }
 
+    /**
+     * This method is used to demonstrate usage of if/while loops.
+     * It creates several nominees with Limits, one award and several nominators.
+     *
+     * @throws NegativeValueAwardException will be thrown if user will try to give an award with negative value.
+     * @throws NegativeSoliException       will be thrown if user will try to give an award with negative soli value.
+     */
     private static void abstractTask() throws NegativeValueAwardException, NegativeSoliException {
         Nominee nominee1 = new Nominee("Peter", 10, 100);
         Nominee nominee2 = new Nominee("Kate", 5, 50);
@@ -99,8 +108,11 @@ public class Main {
 
     /**
      * This method creates several instances of the following classes: award, nominee and nominator.
-     * Also it creates a few nominations, counts whether it has been converted or not and compares nominations received by different nominees
-     * among themselves.
+     * Also it creates a few nominations, counts whether it has been converted or not and compares nominations received
+     * by different nominees among themselves.
+     *
+     * @throws NegativeValueAwardException will be thrown if user will try to give an award with negative value.
+     * @throws NegativeSoliException       will be thrown if user will try to give an award with negative soli value.
      */
     private static void taskWithFormula() throws NegativeValueAwardException, NegativeSoliException {
         NominationHelper myHelper = new NominationHelper();
@@ -177,7 +189,10 @@ public class Main {
     /**
      * This method creates several instances of the following classes: award, nominee and nominator. All nominator and nominee
      * instance are created with limits. When the limit is reached it will print a message describing the type of limit,
-     * who reached the limit, name of the person and award count before limit
+     * who reached the limit, name of the person and award count before limit.
+     *
+     * @throws NegativeValueAwardException will be thrown if user will try to give an award with negative value.
+     * @throws NegativeSoliException       will be thrown if user will try to give an award with negative soli value.
      */
     private static void taskWithLoops() throws NegativeValueAwardException, NegativeSoliException {
         NominationHelper myHelper = new NominationHelper();

@@ -27,9 +27,10 @@ public class Nominee extends Person {
     private List<Award> award1ListWithoutSoli = new ArrayList<Award>();
 
     /**
-     * Constructor for a Nominee object without limits
+     * Constructor for a Nominee object without limits.
      *
-     * @param name name of Nominee
+     * @param name Name of Nominee
+     * @param role Role could be NOMINEE or NOMINATOR
      */
     public Nominee(String name, Type role) {
         super(name);
@@ -48,10 +49,21 @@ public class Nominee extends Person {
         super.role = Type.NOMINEE;
     }
 
+    /**
+     * This method is used to show override in action. It just prints a string with the information about logged in person.
+     */
     @Override
     public void login() {
         System.out.printf("%s logged in.%n", Nominee.this.getName());
 
+    }
+
+    /**
+     * This method is used to show override in action. It prints information about Nominee.
+     */
+    public void printInfo() {
+        System.out.println("Nominee " + this.getName() + " can receive awards. Currently there are " +
+                this.getAward1ListWithoutSoli().size() + " awards available for redemption.");
     }
 
     public List<Award> getAward1ListWithoutSoli() {
@@ -60,15 +72,6 @@ public class Nominee extends Person {
 
     public List<Double> getQuantity() {
         return quantity;
-    }
-
-
-    /**
-     * This method is used to show override in action. It prints information about Nominee.
-     */
-    public void printInfo() {
-        System.out.println("Nominee " + this.getName() + " can receive awards. Currently there are " +
-                this.getAward1ListWithoutSoli().size() + " awards available for redemption.");
     }
 }
 

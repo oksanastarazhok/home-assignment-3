@@ -1,16 +1,19 @@
 package person;
 
-import nominator.Nominator;
-import nominee.Nominee;
-
 public abstract class Person implements OperationsWithLimit {
 
     /**
      * If it equals 0, than Person has no limits, otherwise it equals awardQuantityLimit
      */
     private final int constantAwardQuantityLimit;
+    /**
+     * It could be NOMINATOR or NOMINEE
+     */
     public Type role;
     private String name;
+    /**
+     * It shows the current value of received/given awards
+     */
     private int currValue;
     /**
      * if true, shows that Person can give/receive unlimited sum of money, otherwise amount is restricted
@@ -43,7 +46,6 @@ public abstract class Person implements OperationsWithLimit {
 
     }
 
-
     /**
      * Constructor for Person WITH limits
      *
@@ -61,7 +63,7 @@ public abstract class Person implements OperationsWithLimit {
 
 
     /**
-     * This method is used to show override in action.
+     * This method is used to show override in action. It just prints a string with the information about logged in person.
      */
     public void login() {
         System.out.println("This method should demonstrate override in action. This method wasn't overridden in Nominator Class.");
@@ -69,6 +71,7 @@ public abstract class Person implements OperationsWithLimit {
 
     /**
      * This method is used to show overload in action. It prints information about Nominator.
+     *
      * @param person Object of Class Nominator that can give awards
      */
     public void printInfo(Person person) {
@@ -126,7 +129,6 @@ public abstract class Person implements OperationsWithLimit {
     public void setNoLimitQnt(boolean noLimitQnt) {
         this.noLimitQnt = noLimitQnt;
     }
-
 
     public boolean isLimitReached(int awardQuantityLimit, int currentQuantityLimit) {
         return currentQuantityLimit == awardQuantityLimit;

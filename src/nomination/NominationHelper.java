@@ -43,8 +43,10 @@ public class NominationHelper {
     /**
      * Method checks if an award has soli. If there is a soli, it counts how much it was changed in in percentage terms
      * and prints the value. If there is no soli, it prints the award initial value.
-     * @param award1Instance  Award object
+     *
+     * @param award1Instance Award object
      * @param nomineeInstance Nominee object
+     * @throws NegativeSoliException will be thrown if user will try to give an award with negative soli value.
      */
     private void receiveAward(Award award1Instance, Nominee nomineeInstance) throws NegativeSoliException {
 
@@ -73,9 +75,11 @@ public class NominationHelper {
      * This method is used to give a nomination to Nominee. At first it checks whether both Nominee and Nominator have no
      * amount and quantity limits. Then nominee limits are checked, after that we check nominator limits.
      *
-     * @param awardInstance     Award object Award object
-     * @param nomineeInstance   Nominee object Nominee object
-     * @param nominatorInstance Nominator object Nominator object
+     * @param awardInstance Award object Award object
+     * @param nomineeInstance Nominee object Nominee object
+     * @param nominatorInstance Nominator object
+     * @throws NegativeValueAwardException will be thrown if user will try to give an award with negative value.
+     * @throws NegativeSoliException will be thrown if user will try to give an award with negative soli value.
      */
     public void nominate(Award awardInstance, Person nomineeInstance, Person nominatorInstance) throws NegativeValueAwardException, NegativeSoliException {
         System.out.println("Nominee: " + nomineeInstance.getName());
@@ -87,7 +91,6 @@ public class NominationHelper {
                 } else {
                     receiveAward(awardInstance, (Nominee) nomineeInstance);
             }
-
         } else {
             if (nominatorInstance.isNoLimitQnt()) {
                 if (!nomineeInstance.isLimitReached(nomineeInstance.getAwardQuantityLimit(), nomineeInstance.getCurrValue())) {
@@ -150,6 +153,7 @@ public class NominationHelper {
      * @param awardInstance     Award object
      * @param team              List containing Nominees objects
      * @param nominatorInstance Nominator object
+     * @throws NegativeSoliException will be thrown if user will try to give an award with negative soli value.
      */
     public void nominateTeam(Award awardInstance, List<Nominee> team, Nominator nominatorInstance) throws NegativeSoliException {
 
