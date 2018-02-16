@@ -1,4 +1,5 @@
 import award.Award;
+import exceptions.NegativeSoliException;
 import exceptions.NegativeValueAwardException;
 import nomination.NominationHelper;
 import nominator.Nominator;
@@ -15,8 +16,8 @@ public class Main {
         // taskWithLoops();
         //inheritanceTask();
         //abstractTask();
-        polymorphismTask();
-       // exceptionTask();
+       // polymorphismTask();
+        exceptionTask();
     }
 
 
@@ -24,7 +25,7 @@ public class Main {
      * This method is used to demonstrate custom Exception.
      */
     public static void exceptionTask() {
-        Award perfectAward = new Award(10);
+        Award perfectAward = new Award(10, -2);
         Award excellentAward = new Award(-300);
 
         Person nominee1 = new Nominee("Gerbert", Type.NOMINEE);
@@ -37,15 +38,16 @@ public class Main {
             nominationHelper.nominate(perfectAward, nominee1, nominator);
             nominationHelper.nominate(excellentAward, nominee2, nominator);
             nominationHelper.nominate(excellentAward, nominee2, nominator);
+
         } catch (NegativeValueAwardException e) {
-            System.out.println("test");
+            System.out.println(e);
+        }catch(NegativeSoliException e){
+            System.out.println(e);
         }
 
 
-        nominee1.printInfo();
-        nominee2.printInfo();
 
-    }
+            }
     /**
      * This method is used to demonstrate overriding and overloading.
      * It creates objects of the following Classes: Person, Award and prints info about them.     *
@@ -60,9 +62,13 @@ public class Main {
         Person nominator = new Nominator("Paul", Type.NOMINATOR);
 
         NominationHelper nominationHelper = new NominationHelper();
+        try{
         nominationHelper.nominate(perfectAward, nominee1, nominator);
         nominationHelper.nominate(excellentAward, nominee2, nominator);
-        nominationHelper.nominate(excellentAward, nominee2, nominator);
+        nominationHelper.nominate(excellentAward, nominee2, nominator);}
+        catch (NegativeSoliException e){
+            System.out.println(e);
+        }
 
         nominee1.printInfo();
         nominee2.printInfo();
@@ -72,7 +78,7 @@ public class Main {
 
     }
 
-    private static void abstractTask() throws NegativeValueAwardException {
+    private static void abstractTask() throws NegativeValueAwardException, NegativeSoliException {
         Nominee nominee1 = new Nominee("Peter", 10, 100);
         Nominee nominee2 = new Nominee("Kate", 5, 50);
         Nominee nominee3 = new Nominee("Ann", 1, 10);
@@ -83,6 +89,7 @@ public class Main {
         Nominator nominator1WithLimits = new Nominator("Federico", 1, 10);
 
         NominationHelper nominationHelper = new NominationHelper();
+
         nominationHelper.nominate(goodJobAward1, nominee3, nominator2WithLimits);
         nominationHelper.nominate(goodJobAward1, nominee2, nominator2WithLimits);
         nominationHelper.nominate(goodJobAward1, nominee3, nominator2WithLimits);
@@ -95,7 +102,7 @@ public class Main {
      * Also it creates a few nominations, counts whether it has been converted or not and compares nominations received by different nominees
      * among themselves.
      */
-    private static void taskWithFormula() throws NegativeValueAwardException {
+    private static void taskWithFormula() throws NegativeValueAwardException, NegativeSoliException {
         NominationHelper myHelper = new NominationHelper();
 
         Award goodJobAward1 = new Award(100);
@@ -172,7 +179,7 @@ public class Main {
      * instance are created with limits. When the limit is reached it will print a message describing the type of limit,
      * who reached the limit, name of the person and award count before limit
      */
-    private static void taskWithLoops() throws NegativeValueAwardException {
+    private static void taskWithLoops() throws NegativeValueAwardException, NegativeSoliException {
         NominationHelper myHelper = new NominationHelper();
         Award goodJobAward1 = new Award(100);
         Nominator nominator2WithLimits = new Nominator("Karl", 3, 1000);

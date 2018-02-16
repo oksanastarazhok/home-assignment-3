@@ -1,6 +1,7 @@
 package nomination;
 
 import award.Award;
+import exceptions.NegativeSoliException;
 import exceptions.NegativeValueAwardException;
 import nominator.Nominator;
 import nominee.Nominee;
@@ -45,7 +46,7 @@ public class NominationHelper {
      * @param award1Instance  Award object
      * @param nomineeInstance Nominee object
      */
-    private void receiveAward(Award award1Instance, Nominee nomineeInstance) {
+    private void receiveAward(Award award1Instance, Nominee nomineeInstance) throws NegativeSoliException {
 
         if (award1Instance.getSoli() > 0) {
 
@@ -55,7 +56,11 @@ public class NominationHelper {
             } else {
                 System.out.println("Award value increased on " + percentage + "%.");
             }
-        } else {
+        }else if (award1Instance.getSoli() < 0){
+            throw new NegativeSoliException("You can't give award with negative Soli. Please, change Soli and try again.");
+        }
+
+        else {
             System.out.println("Award value: " + award1Instance.getValue() + " Award value wasn't converted.");
             nomineeInstance.setCurrValue(nomineeInstance.getCurrValue() + 1);
             nomineeInstance.getAward1ListWithoutSoli().add(award1Instance);
@@ -72,20 +77,16 @@ public class NominationHelper {
      * @param nomineeInstance   Nominee object Nominee object
      * @param nominatorInstance Nominator object Nominator object
      */
-    public void nominate(Award awardInstance, Person nomineeInstance, Person nominatorInstance) throws NegativeValueAwardException {
+    public void nominate(Award awardInstance, Person nomineeInstance, Person nominatorInstance) throws NegativeValueAwardException, NegativeSoliException {
         System.out.println("Nominee: " + nomineeInstance.getName());
 
         if (nominatorInstance.isNoLimitAmt() && nominatorInstance.isNoLimitQnt() && nomineeInstance.isNoLimitAmt() && nomineeInstance.isNoLimitQnt()) {
-            //try{
+
                 if(awardInstance.getValue()< 0) {
                     throw new NegativeValueAwardException("Impossible to send your award as it has negative value. Please, change award value and try again.");
                 } else {
                     receiveAward(awardInstance, (Nominee) nomineeInstance);
             }
-            /*catch (NegativeValueAwardException ex){
-                System.out.println(ex);
-            }*/
-
 
         } else {
             if (nominatorInstance.isNoLimitQnt()) {
@@ -150,7 +151,7 @@ public class NominationHelper {
      * @param team              List containing Nominees objects
      * @param nominatorInstance Nominator object
      */
-    public void nominateTeam(Award awardInstance, List<Nominee> team, Nominator nominatorInstance) {
+    public void nominateTeam(Award awardInstance, List<Nominee> team, Nominator nominatorInstance) throws NegativeSoliException {
 
         int i = 0;
         int max_i = team.size();
