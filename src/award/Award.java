@@ -44,9 +44,10 @@ public class Award {
 
     /**
      * Constructor for awards that have id and type
+     *
      * @param value award value
-     * @param type award type
-     * @param id award id
+     * @param type  award type
+     * @param id    award id
      */
     public Award(int value, String type, int id) {
         this(value);
@@ -54,16 +55,52 @@ public class Award {
         this.id = id;
     }
 
+    /**
+     * This method is my implementation of hashCode method.
+     *
+     * @return id of Award object
+     */
+    @Override
+    public int hashCode() {
+        return this.getId();
+    }
 
-    public void pintAwards(List<Award> myAwards) {
-        for (Award award:myAwards) {
-            System.out.println(award);
+    /**
+     * This method is my implementation of equals method.
+     *
+     * @param obj object for comparison
+     * @return boolean value
+     */
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+
+        Award award = (Award) obj;
+        return this.getValue() == award.getValue() && this.getType().equals(award.getType());
+    }
+
+
+    /**
+     * This method is used to print awards of particular type.
+     *
+     * @param myAwards List with awards
+     * @param type     Award type
+     */
+    public static void pintAwards(List<Award> myAwards, String type) {
+        System.out.println("Below you can see awards' ids that have type <" + type + ">:");
+        for (Award award : myAwards) {
+            if (award.getType().equals(type)) {
+                System.out.println(award.getId());
+            }
         }
-            
-        }
 
-
-
+    }
 
 
     public int getValue() {

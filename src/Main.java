@@ -8,7 +8,9 @@ import person.Person;
 import person.Type;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws NegativeValueAwardException {
@@ -17,9 +19,70 @@ public class Main {
         //inheritanceTask();
         //abstractTask();
         // polymorphismTask();
-        exceptionTask();
+        // exceptionTask();
+        printAwardsTask();
     }
 
+    /**
+     * This method is used to create Array with Awards of different types. After that we print unique award type vie
+     * using HashSet.+
+     */
+    public static void printAwardsTask() {
+
+        Award awardNumber1 = new Award(100, "Private", 1);
+        Award awardNumber2 = new Award(10, "Private", 2);
+        Award awardNumber3 = new Award(100, "Private", 3);
+        Award awardNumber4 = new Award(100, "Restricted", 74);
+        Award awardNumber5 = new Award(100, "Private", 4);
+        Award awardNumber6 = new Award(100, "Restricted", 5);
+        Award awardNumber7 = new Award(100, "Private", 6);
+        Award awardNumber8 = new Award(100, "Private", 7);
+        Award awardNumber9 = new Award(100, "Public", 11);
+        Award awardNumber10 = new Award(100, "Private", 15);
+        Award awardNumber11 = new Award(100, "Public", 18);
+        Award awardNumber12 = new Award(100, "Private", 51);
+        Award awardNumber13 = new Award(100, "Private", 111);
+        Award awardNumber14 = new Award(100, "Restricted", 21);
+        Award awardNumber15 = new Award(100, "Public", 19);
+
+        List<Award> myAwards = new ArrayList<>(15);
+
+        myAwards.add(awardNumber1);
+        myAwards.add(awardNumber2);
+        myAwards.add(awardNumber3);
+        myAwards.add(awardNumber4);
+        myAwards.add(awardNumber5);
+        myAwards.add(awardNumber6);
+        myAwards.add(awardNumber7);
+        myAwards.add(awardNumber8);
+        myAwards.add(awardNumber9);
+        myAwards.add(awardNumber10);
+        myAwards.add(awardNumber11);
+        myAwards.add(awardNumber12);
+        myAwards.add(awardNumber13);
+        myAwards.add(awardNumber14);
+        myAwards.add(awardNumber15);
+
+        Award.pintAwards(myAwards, "Public");
+
+        Set<String> allAwardsTypes = new HashSet<>();
+        for (Award award : myAwards) {
+            allAwardsTypes.add(award.getType());
+        }
+        System.out.println("Below you can see all awards types:");
+        for (String type : allAwardsTypes) {
+
+            System.out.println(type);
+        }
+
+        System.out.println(awardNumber1.equals(awardNumber3));
+        System.out.println(awardNumber1.equals(awardNumber6));
+
+        System.out.println(awardNumber1.hashCode());
+        System.out.println(awardNumber3.hashCode());
+        System.out.println(awardNumber6.hashCode());
+
+    }
 
     /**
      * This method is used to demonstrate custom Exceptions: NegativeValueAwardException and NegativeSoliException.
