@@ -82,7 +82,7 @@ public class Award {
             return false;
 
         Award award = (Award) obj;
-        return this.getValue() == award.getValue() && this.getType().equals(award.getType());
+        return (this.getValue() == award.getValue()) && this.getType().equals(award.getType()) && this.getId() ==  award.getId();
     }
 
 
@@ -93,7 +93,7 @@ public class Award {
      * @param type     Award type
      */
     public static void pintAwards(List<Award> myAwards, String type) {
-        System.out.println("Below you can see awards' ids that have type <" + type + ">:");
+        System.out.println("\nBelow you can see awards' ids that have type <" + type + ">:");
         for (Award award : myAwards) {
             if (award.getType().equals(type)) {
                 System.out.println(award.getId());

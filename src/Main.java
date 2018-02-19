@@ -29,13 +29,13 @@ public class Main {
      */
     public static void printAwardsTask() {
 
-        Award awardNumber1 = new Award(100, "Private", 1);
+        Award awardNumber1 = new Award(100, "Restricted", 1);
         Award awardNumber2 = new Award(10, "Private", 2);
         Award awardNumber3 = new Award(100, "Private", 3);
         Award awardNumber4 = new Award(100, "Restricted", 74);
         Award awardNumber5 = new Award(100, "Private", 4);
-        Award awardNumber6 = new Award(100, "Restricted", 5);
-        Award awardNumber7 = new Award(100, "Private", 6);
+        Award awardNumber6 = new Award(100, "Restricted", 1);
+        Award awardNumber7 = new Award(100, "Private", 1);
         Award awardNumber8 = new Award(100, "Private", 7);
         Award awardNumber9 = new Award(100, "Public", 11);
         Award awardNumber10 = new Award(100, "Private", 15);
@@ -69,18 +69,27 @@ public class Main {
         for (Award award : myAwards) {
             allAwardsTypes.add(award.getType());
         }
-        System.out.println("Below you can see all awards types:");
+        System.out.println("\nBelow you can see all awards types:");
         for (String type : allAwardsTypes) {
 
             System.out.println(type);
         }
-
+        System.out.println();
+        System.out.println("Method equals for two different awards returns:");
         System.out.println(awardNumber1.equals(awardNumber3));
-        System.out.println(awardNumber1.equals(awardNumber6));
-
+        System.out.println("Hashcodes of two different awards are the following:");
         System.out.println(awardNumber1.hashCode());
         System.out.println(awardNumber3.hashCode());
+        System.out.println();
+        System.out.println("Method equals for two equal awards returns:");
+        System.out.println(awardNumber1.equals(awardNumber6));
+        System.out.println("Hashcodes of two equal awards are the following:");
         System.out.println(awardNumber6.hashCode());
+        System.out.println(awardNumber1.hashCode());
+        System.out.println();
+        System.out.println("Hashcodes of two  awards that are not equal can be the same:");
+        System.out.println(awardNumber6.hashCode());
+        System.out.println(awardNumber7.hashCode());
 
     }
 
