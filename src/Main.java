@@ -86,11 +86,7 @@ public class Main {
         System.out.println("Hashcodes of two equal awards are the following:");
         System.out.println(awardNumber6.hashCode());
         System.out.println(awardNumber1.hashCode());
-        System.out.println();
-        System.out.println("Hashcodes of two  awards that are not equal can be the same:");
-        System.out.println(awardNumber6.hashCode());
-        System.out.println(awardNumber7.hashCode());
-
+        
     }
 
     /**

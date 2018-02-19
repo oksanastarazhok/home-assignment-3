@@ -56,37 +56,6 @@ public class Award {
     }
 
     /**
-     * This method is my implementation of hashCode method.
-     *
-     * @return id of Award object
-     */
-    @Override
-    public int hashCode() {
-        return this.getId();
-    }
-
-    /**
-     * This method is my implementation of equals method.
-     *
-     * @param obj object for comparison
-     * @return boolean value
-     */
-    @Override
-    public boolean equals(Object obj) {
-
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-
-        Award award = (Award) obj;
-        return (this.getValue() == award.getValue()) && this.getType().equals(award.getType()) && this.getId() ==  award.getId();
-    }
-
-
-    /**
      * This method is used to print awards of particular type.
      *
      * @param myAwards List with awards
@@ -101,7 +70,6 @@ public class Award {
         }
 
     }
-
 
     public int getValue() {
         return value;
@@ -128,5 +96,44 @@ public class Award {
         this.id = id;
     }
 
+    /**
+     * This method is my implementation of equals method.
+     *
+     * @param o object for comparison
+     * @return boolean value
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Award award = (Award) o;
+
+        if (value != award.value) return false;
+        if (id != award.id) return false;
+        return type.equals(award.type);
+    }
+
+    /**
+     * This method is my implementation of hashCode method.
+     *
+     * @return id of Award object
+     */
+    @Override
+    public int hashCode() {
+        int result = value;
+        result = 31 * result + type.hashCode();
+        result = 31 * result + id;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Award{" +
+                "value=" + value +
+                ", soli=" + soli +
+                ", type='" + type + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }
